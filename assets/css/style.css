@@ -1,0 +1,25 @@
+.alert p { display: inline !important; }
+img { max-width: 100%; height: auto; } 
+@media (min-width: 1440px) {
+	.container { width: 1400px; }
+}
+a { cursor: pointer; }
+a:hover { text-decoration: none; }
+*:focus { outline: 0; }
+
+#cke_18 { display: none; }
+
+.text-green { color: #00ff17; }
+.text-orange { color: #ff9900; }
+.text-red { color: #ff0000; }
+
+/* Recensies */
+.recensies-overview { margin-bottom: 50px; }
+.single-recensie {	background: #f7f7f7; border: 1px solid #eee; padding: 10px; margin-bottom: 15px; line-height: 28px; }
+.single-recensie .rating-xs { font-size: 1.5em; }
+.customer-reviews { text-align: center; padding-top: 10px; position: relative; }
+.customer-reviews span.title { display: block; background: #d8d8d8; padding: 15px; color: #717171; text-align: left; font-size: 16px; padding: 15px 25px; }
+.customer-reviews span#rating { display: inline-block; width: 70px; height: 70px; line-height: 70px; border-radius: 100%; background: #f3a12b; color: #a26307; box-shadow: 2px 1px 0px 0px #bf7811; position: absolute; right: -10px; top: 0; font-size: 24px; font-weight: 500; }
+.customer-reviews .rating-xs { background: #f7f7f7; padding: 15px; border-left: 2px solid #d8d8d8; border-right: 2px solid #d8d8d8; }
+.customer-reviews a.btn { display: block; border-radius: 0; border: none; background: #006935; color: rgba(255,255,255, 0.8); text-shadow: none; padding: 15px; border-bottom: 3px solid #004020; font-size: 16px; text-align: center; transition: 0.3s ease; }
+.customer-reviews a.btn:hover { background: #004020; }
