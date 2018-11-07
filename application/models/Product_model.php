@@ -12,4 +12,20 @@
 			$query = $this->db->get_where('products', array('slug' => $slug));
 			return $query->row_array();
 		}
+		
+		public function create_product() {
+			$slug = url_title($this->input->post('name'));
+			
+			$data = array(
+				'name' => $this->input->post('name'),
+				'slug' => $slug,
+				'body' => $this->input->post('body'),
+				'count' => $this->input->post('count'),
+				'available' => $this->input->post('count'),
+			);
+			
+			$this->db->insert('products', $data);
+			
+			return $slug;
+		}
 	}

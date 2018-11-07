@@ -11,4 +11,33 @@
 			$this->load->view('templates/footer');
 			
 		}
+		
+		public function view($slug = NULL) {
+			$data['product'] = $this->Product_model->get_products($slug);
+			
+			if (empty($data['product'])) {
+				show_404();
+			}
+			
+			$data['title'] = $data['product']['name'];
+			
+			$this->load->view('templates/header');
+			$this->load->view('products/view', $data);
+			$this->load->view('templates/footer');
+		}
+		
+		public function create() {
+			$data['title'] = 'Nieuw product';
+			
+			$this->form_validation->set_rules('name', 'Naam', 'required');
+			$this->form_validation->set_rules('body', 'Aantal', 'required');
+			
+			if ($this->form_validation->run()) {
+				redirect('/producten/' . $this->Product_model->create_product());
+			}
+			
+			$this->load->view('templates/header');
+			$this->load->view('products/create', $data);
+			$this->load->view('templates/footer');
+		}
 	}

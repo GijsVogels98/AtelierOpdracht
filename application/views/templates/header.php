@@ -22,10 +22,13 @@
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul class="navbar-nav mr-auto">
 							<li class="nav-item">
-								<a class="nav-link" href="<?php echo base_url(); ?>categories">Categorieën</a>
+								<a class="nav-link" href="<?php echo base_url(); ?>categorieen">Categorieën</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="<?php echo base_url(); ?>products">Producten</a>
+								<a class="nav-link" href="<?php echo base_url(); ?>producten">Producten</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="<?php echo base_url(); ?>producten/nieuw">Nieuw product</a>
 							</li>
 						</ul>
 						<ul class="navbar-nav">

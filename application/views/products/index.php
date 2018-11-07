@@ -12,15 +12,13 @@
 			<thead>
 				<tr>
 					<th>Naam</th>
-					<th>Aantal</th>
 					<th>Beschikbaar</th>
 				</tr>
 			</thead>
 			<tbody class="list">
 				<?php foreach($products as $product): ?>
 					<tr>
-						<td class="name"><a href="#"><?=$product['name']?></a></td>
-						<td><?=$product['count']?></td>
+						<td class="name"><a href="<?=site_url('/producten/' . $product['slug'])?>"><?=$product['name']?></a></td>
 						<?php if ($product['available'] > 2 || $product['available'] == $product['count']) { ?>
 							<td class="text-green"><?=$product['available']?></td>
 						<?php } elseif ($product['available'] == 0) { ?>
