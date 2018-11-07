@@ -103,3 +103,8 @@
 						<strong>Succes!</strong> <?php echo $this->session->flashdata('user_deleted'); ?>
 					</div>
 				<?php } ?>
+                <?php if ($this->session->flashdata('product_deleted')) { ?>
+                    <div class="alert alert-success" role="alert">
+                        <strong>Succes!</strong> <?php echo $this->session->flashdata('product_deleted'); ?>
+                    </div>
+                <?php } ?>

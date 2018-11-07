@@ -40,4 +40,14 @@
 			$this->load->view('products/create', $data);
 			$this->load->view('templates/footer');
 		}
+
+
+        public function delete($id) {
+//		    echo $id;
+            $this->Product_model->delete_product($id);
+            $this->session->set_flashdata('product_deleted', 'Het product is verwijderd.');
+            redirect('producten');
+        }
+
+
 	}

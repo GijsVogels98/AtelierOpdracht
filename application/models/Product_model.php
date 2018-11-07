@@ -28,4 +28,12 @@
 			
 			return $slug;
 		}
+
+
+
+		public function delete_product($id){
+		    $this->db->where('product_id', $id);
+		    $this->db->delete('products');
+		    return true;
+        }
 	}
