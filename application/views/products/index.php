@@ -31,11 +31,10 @@
                             <?php echo form_open('/products/delete/'.$product['product_id']); ?>
                             <button type="submit" class="btn btn-danger float-right" style="font-size: 10px !important; font-weight: 600;">x</button>
                             </form>
+                            <a class="btn btn-light pull-right" href="products/edit/<?php echo $product['slug']; ?>">edit</a>
 <!--                            <a class="btn btn-light button float-right" style="font-size: 10px !important; font-weight: 600;">Edit</a>-->
                         </td>
-
-
-					</tr>
+                    </tr>
 				<?php endforeach; ?>
 			</tbody>
 	</div>

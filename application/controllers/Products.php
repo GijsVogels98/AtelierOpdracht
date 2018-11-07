@@ -48,12 +48,20 @@
          redirect('producten');
    	}
    	
-   	public function test() {
-	   	echo 'test';
-   	}
 
-        public function edit() {
 
+        public function edit($slug) {
+            $data['product'] = $this->Product_model->get_products($slug);
+
+            if (empty($data['product'])) {
+                show_404();
+            }
+
+            $data['title'] = 'Edit Product';
+
+            $this->load->view('templates/header');
+            $this->load->view('products/edit', $data);
+            $this->load->view('templates/footer');
         }
 
 

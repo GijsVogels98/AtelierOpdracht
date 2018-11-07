@@ -36,4 +36,8 @@
 		    $this->db->delete('products');
 		    return true;
         }
+
+//        public function edit_product(){
+//
+//        }
 	}
