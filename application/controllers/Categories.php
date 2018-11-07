@@ -3,7 +3,7 @@
 		
 		public function index() {
 			
-			$data['title'] = 'Categories';
+			$data['title'] = 'Categorieën';
 			
 			$data['categories'] = $this->category_model->get_categories();
 			
@@ -15,7 +15,7 @@
 		
 		public function create() {
 			
-			$data['title'] = 'Create category';
+			$data['title'] = 'Nieuw categorie';
 			
 			$this->form_validation->set_rules('category_name', 'Name', 'required', array('required'=>'Het veld naam is verplicht!'));
 			
@@ -36,12 +36,12 @@
 		
 		public function posts($id) {
 			
-			$data['title'] = $this->category_model->get_category($id)->name;
+			$data['title'] = $this->category_model->get_category($id)->category_name;
 			
-			$data['posts'] = $this->post_model->get_posts_by_category($id);
+			$data['products'] = $this->Product_model->get_products_by_category($id);
 			
 			$this->load->view('templates/header');
-			$this->load->view('posts/index', $data);
+			$this->load->view('products/index', $data);
 			$this->load->view('templates/footer');
 						
 		}

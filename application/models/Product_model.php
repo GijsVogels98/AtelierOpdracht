@@ -42,6 +42,15 @@
 	      $query = $this->db->get('categories');
 	      return $query->result_array();
       }
+      
+      public function get_products_by_category($category_id) {
+			
+			$this->db->order_by('products.product_id', 'DESC');
+			$this->db->join('categories', 'categories.id = products.category_id');
+			$query = $this->db->get_where('products', array('category_id' => $category_id));
+			return $query->result_array();
+			
+		}
 
         public function update_post(){
             $slug = url_title($this->input->post('name'));
