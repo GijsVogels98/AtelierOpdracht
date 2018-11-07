@@ -16,6 +16,14 @@
     <input type="number" class="form-control" id="count" name="count" placeholder="Voer hier in hoeveel stuks er zijn..." value="<?php echo $product['count']; ?>">
 </div>
 <div class="form-group">
+    <label for="category">Categorie</label>
+    <select name="category_id" class="form-control">
+        <?php foreach($categories as $category): ?>
+            <option value="<?=$category['id']?>"><?=$category['name']?></option>
+        <?php endforeach; ?>
+    </select>
+</div>
+<div class="form-group">
     <button type="submit" class="btn btn-primary" id="submit" name="submit">Voeg product toe</button>
 </div>
 
