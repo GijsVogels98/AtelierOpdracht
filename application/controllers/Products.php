@@ -52,5 +52,9 @@
 	   	echo 'test';
    	}
 
+        public function edit() {
+
+        }
+
 
 	}
