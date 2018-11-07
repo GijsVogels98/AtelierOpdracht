@@ -2,7 +2,8 @@
 
 <?=validation_errors('<div class="alert alert-danger"><strong>Opgelet!</strong> ', '</div>')?>
 
-<?=form_open('products/create')?>
+<?=form_open('products/update')?>
+<input type="hidden" name="id" value="<?php echo $product['product_id']; ?>">
 <div class="form-group">
     <label for="name">Naam</label>
     <input type="text" class="form-control" id="name" name="name" placeholder="Voer hier de naam van het product in..." value="<?php echo $product['name']; ?>">

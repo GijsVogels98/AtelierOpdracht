@@ -64,4 +64,9 @@
          $this->load->view('templates/footer');
       }
 
+      public function update(){
+		    $this->Product_model->update_post();
+		    redirect('producten');
+      }
+
 	}

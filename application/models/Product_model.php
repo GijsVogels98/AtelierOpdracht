@@ -37,15 +37,26 @@
 		    return true;
       }
 
-      public function edit_product(){
-		   $this->db->where('product_id', $id);
-		   $this->db->delete('products');
-		   return true;
-      }
-      
-      public function get_categories() {
+        public function get_categories() {
 	      $this->db->order_by('id');
 	      $query = $this->db->get('categories');
 	      return $query->result_array();
       }
+
+        public function update_post(){
+            $slug = url_title($this->input->post('name'));
+
+            $data = array(
+                'name' => $this->input->post('name'),
+                'slug' => $slug,
+                'body' => $this->input->post('body'),
+                'count' => $this->input->post('count'),
+                'available' => $this->input->post('count'),
+                'category_id' => $this->input->post('category_id'),
+            );
+            $this->db->where('product_id', $this->input->post('id'));
+            return $this->db->update('products', $data);
+
+
+        }
 	}
