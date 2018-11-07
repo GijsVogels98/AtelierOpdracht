@@ -49,5 +49,9 @@
             redirect('producten');
         }
 
+        public function edit() {
+
+        }
+
 
 	}
