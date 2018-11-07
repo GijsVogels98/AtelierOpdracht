@@ -31,16 +31,12 @@
 		}
 		
 		public function delete_product($id){
-<<<<<<< HEAD
 		    $this->db->where('product_id', $id);
 		    $this->db->delete('products');
 		    return true;
-        }
+      }
 
-//        public function edit_product(){
-//
-//        }
-=======
+      public function edit_product(){
 		   $this->db->where('product_id', $id);
 		   $this->db->delete('products');
 		   return true;
@@ -51,5 +47,4 @@
 	      $query = $this->db->get('categories');
 	      return $query->result_array();
       }
->>>>>>> dec858fa6d9309ccb4086e5b8def41f8b10d7ace
 	}
