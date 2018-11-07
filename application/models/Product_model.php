@@ -28,7 +28,7 @@
 			
 			$this->db->insert('products', $data);
 			
-			return $slug;
+			return;
 		}
 		
 		public function delete_product($id){
