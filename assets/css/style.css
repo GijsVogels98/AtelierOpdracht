@@ -23,3 +23,6 @@ a:hover { text-decoration: none; }
 .customer-reviews .rating-xs { background: #f7f7f7; padding: 15px; border-left: 2px solid #d8d8d8; border-right: 2px solid #d8d8d8; }
 .customer-reviews a.btn { display: block; border-radius: 0; border: none; background: #006935; color: rgba(255,255,255, 0.8); text-shadow: none; padding: 15px; border-bottom: 3px solid #004020; font-size: 16px; text-align: center; transition: 0.3s ease; }
 .customer-reviews a.btn:hover { background: #004020; }
+
+form { margin: 0; }
+.table td, .table th { vertical-align: middle; border: 0; padding: .30rem 1rem; }

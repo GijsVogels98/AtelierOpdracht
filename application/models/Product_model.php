@@ -6,6 +6,7 @@
 		
 		public function get_products($slug = FALSE) {
 			if ($slug === FALSE) {
+				$this->db->join('categories', 'categories.id = products.category_id');
 				$query = $this->db->get('products');
 				return $query->result_array();
 			}
