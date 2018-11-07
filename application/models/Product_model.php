@@ -22,18 +22,23 @@
 				'body' => $this->input->post('body'),
 				'count' => $this->input->post('count'),
 				'available' => $this->input->post('count'),
+				'category_id' => $this->input->post('category_id'),
 			);
 			
 			$this->db->insert('products', $data);
 			
 			return $slug;
 		}
-
-
-
+		
 		public function delete_product($id){
-		    $this->db->where('product_id', $id);
-		    $this->db->delete('products');
-		    return true;
-        }
+		   $this->db->where('product_id', $id);
+		   $this->db->delete('products');
+		   return true;
+      }
+      
+      public function get_categories() {
+	      $this->db->order_by('id');
+	      $query = $this->db->get('categories');
+	      return $query->result_array();
+      }
 	}
