@@ -1,11 +1,7 @@
 <h2><?=$title?></h2>
 
 <?php if($products) { ?>
-<<<<<<< HEAD
-<div class="card mb-3" id="products">
-=======
-<div class="card mb-5" id="products">
->>>>>>> ea94bad389389efeb5bd2a46417a4738f4eafacb
+<div class="card mb-4" id="products">
 	<div class="card-header">
 		<form class="form-inline mb-0">
 			<input type="text" id="productSearch" class="form-control search" placeholder="Zoeken...">

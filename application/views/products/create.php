@@ -13,7 +13,7 @@
   </div>
   <div class="form-group">
     <label for="count">Aantal</label>
-    <input type="text" class="form-control" id="count" name="count" placeholder="Voer hier in hoeveel stuks er zijn...">
+    <input type="number" class="form-control" id="count" name="count" placeholder="Voer hier in hoeveel stuks er zijn...">
   </div>
   <div class="form-group">
     <button type="submit" class="btn btn-primary" id="submit" name="submit">Voeg product toe</button>

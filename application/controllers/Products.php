@@ -29,8 +29,8 @@
 		public function create() {
 			$data['title'] = 'Nieuw product';
 			
-			$this->form_validation->set_rules('name', 'Naam', 'required');
-			$this->form_validation->set_rules('body', 'Aantal', 'required');
+			$this->form_validation->set_rules('name', 'Naam', 'required', array('required'=>'Het veld naam is verplicht!'));
+			$this->form_validation->set_rules('body', 'Aantal', 'required|alpha_numeric', array('required'=>'Het veld aantal is verplicht!'));
 			
 			if ($this->form_validation->run()) {
 				redirect('/producten/' . $this->Product_model->create_product());
