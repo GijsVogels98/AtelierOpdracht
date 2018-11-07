@@ -51,6 +51,7 @@
    	
 		public function edit($slug) {
          $data['product'] = $this->Product_model->get_products($slug);
+         $data['categories'] = $this->Product_model->get_categories();
 
          if (empty($data['product'])) {
              show_404();
