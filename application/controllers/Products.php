@@ -29,6 +29,8 @@
 		public function create() {
 			$data['title'] = 'Nieuw product';
 			
+			$data['categories'] = $this->Product_model->get_categories();
+			
 			$this->form_validation->set_rules('name', 'Naam', 'required', array('required'=>'Het veld naam is verplicht!'));
 			$this->form_validation->set_rules('body', 'Aantal', 'required', array('required'=>'Het veld aantal is verplicht!'));
 			
@@ -41,12 +43,12 @@
 			$this->load->view('templates/footer');
 		}
 
-
 		public function delete($id) {
          $this->Product_model->delete_product($id);
          $this->session->set_flashdata('product_deleted', 'Het product is verwijderd.');
          redirect('producten');
    	}
+<<<<<<< HEAD
    	
 
 
@@ -63,6 +65,12 @@
             $this->load->view('products/edit', $data);
             $this->load->view('templates/footer');
         }
+=======
+
+      public function edit() {
+
+      }
+>>>>>>> dec858fa6d9309ccb4086e5b8def41f8b10d7ace
 
 
 	}

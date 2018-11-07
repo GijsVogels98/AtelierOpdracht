@@ -22,16 +22,16 @@
 				'body' => $this->input->post('body'),
 				'count' => $this->input->post('count'),
 				'available' => $this->input->post('count'),
+				'category_id' => $this->input->post('category_id'),
 			);
 			
 			$this->db->insert('products', $data);
 			
 			return $slug;
 		}
-
-
-
+		
 		public function delete_product($id){
+<<<<<<< HEAD
 		    $this->db->where('product_id', $id);
 		    $this->db->delete('products');
 		    return true;
@@ -40,4 +40,16 @@
 //        public function edit_product(){
 //
 //        }
+=======
+		   $this->db->where('product_id', $id);
+		   $this->db->delete('products');
+		   return true;
+      }
+      
+      public function get_categories() {
+	      $this->db->order_by('id');
+	      $query = $this->db->get('categories');
+	      return $query->result_array();
+      }
+>>>>>>> dec858fa6d9309ccb4086e5b8def41f8b10d7ace
 	}
