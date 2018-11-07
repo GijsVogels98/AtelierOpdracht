@@ -42,12 +42,15 @@
 		}
 
 
-        public function delete($id) {
-//		    echo $id;
-            $this->Product_model->delete_product($id);
-            $this->session->set_flashdata('product_deleted', 'Het product is verwijderd.');
-            redirect('producten');
-        }
+		public function delete($id) {
+         $this->Product_model->delete_product($id);
+         $this->session->set_flashdata('product_deleted', 'Het product is verwijderd.');
+         redirect('producten');
+   	}
+   	
+   	public function test() {
+	   	echo 'test';
+   	}
 
 
 	}
