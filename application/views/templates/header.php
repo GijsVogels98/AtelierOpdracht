@@ -113,8 +113,6 @@
 				<?php } ?>
 				
 				
-			
-				
 				<?php if ($this->session->flashdata('category_created')) { ?>
 					<div class="alert alert-success" role="alert">
 						<strong>Succes!</strong> <?php echo $this->session->flashdata('category_created'); ?>
@@ -124,5 +122,12 @@
 				<?php if ($this->session->flashdata('category_deleted')) { ?>
 					<div class="alert alert-success" role="alert">
 						<strong>Succes!</strong> <?php echo $this->session->flashdata('category_deleted'); ?>
+					</div>
+				<?php } ?>
+				
+				
+				<?php if ($this->session->flashdata('redeem_product')) { ?>
+					<div class="alert alert-success" role="alert">
+						<strong>Succes!</strong> <?php echo $this->session->flashdata('redeem_product'); ?>
 					</div>
 				<?php } ?>
