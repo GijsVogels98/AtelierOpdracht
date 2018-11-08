@@ -27,5 +27,5 @@ a:hover { text-decoration: none; }
 
 form { margin: 0; }
 .table td, .table th { vertical-align: middle; border: 0; padding: .30rem 1rem; }
-
+.table td .btn { padding: .1rem .4rem; }
 .navbar-brand svg { width: 180px; height: 24px; }

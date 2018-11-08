@@ -8,8 +8,16 @@
     <input type="text" class="form-control" id="customer_name" name="customer_name" placeholder="Voer hier de naam van de lener in...">
   </div>
   <div class="form-group">
+    <label for="student_number">Leerlingnummer</label>
+    <input type="text" class="form-control" id="student_number" name="student_number" placeholder="Voer hier het leerlingnummer van de lener in...">
+  </div>
+  <div class="form-group">
     <label for="customer_email">E-mailadres</label>
     <input type="email" class="form-control" id="customer_email" name="customer_email" placeholder="Voer hier het e-mailadres van de lener in...">
+  </div>
+  <div class="form-group">
+    <label for="customer_phone">Telefoonnummer (Optioneel)</label>
+    <input type="text" class="form-control" id="customer_phone" name="customer_phone" placeholder="Voer hier het telefoonnummer van de lener in...">
   </div>
   <div class="form-group">
     <label for="borrowed_till">Inleverdatum</label>
@@ -22,6 +30,10 @@
 				<option value="<?=$product['product_id']?>"><?=$product['name']?></option>
 			<?php endforeach; ?>
 		</select>
+  </div>
+  <div class="form-group">
+    <label for="note_before">Opmerking voor het lenen</label>
+    <textarea  name="note_before" class="form-control"></textarea>
   </div>
   <div class="form-group">
     <button type="submit" class="btn btn-primary" id="submit" name="submit">Voeg product toe</button>

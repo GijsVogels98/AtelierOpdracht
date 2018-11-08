@@ -26,12 +26,14 @@
 		
 		public function redeem($id) {
          $this->Borrowed_model->redeem_loan($id);
+         $this->Product_model->product_min_one();
          $this->session->set_flashdata('redeem_product', 'Het product is ingeleverd.');
          redirect('lenen');
    	}
    	
    	public function deredeem($id) {
          $this->Borrowed_model->redeem_loan($id);
+         $this->Product_model->product_plus_one();
          $this->session->set_flashdata('redeem_product', 'De lening is toegevoegd aan de openstaande leningen lijst');
          redirect('lenen/ingeleverd');
    	}
@@ -47,6 +49,7 @@
 			
 			if ($this->form_validation->run()) {
 				$this->Borrowed_model->create_loan();
+				$this->Product_model->product_plus_one();
 				$this->session->set_flashdata('product_created', 'Je product is toegevoegd!');
 				redirect('lenen');
 			}
