@@ -1,8 +1,9 @@
 <div class="row">
-	<div class="col-md-9">
+	<div class="col-md-8">
 		<div class="card mb-4" id="products">
 			<div class="card-header d-flex justify-content-between align-items-center">
-				<h4>Inleveren vandaag of telaat</h4>
+				<h4 class="mb-0">Inleveren vandaag of telaat</h4>
+				<a href="<?php echo base_url(); ?>lenen/nieuw" class="btn btn-primary">Nieuwe Lening</a>
 			</div>
 			<div class="table-responsive">
 				<table class="table card-table mb-0 table-striped">
@@ -101,10 +102,10 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-md-3">
+	<div class="col-md-4">
 		<div class="card mb-4" id="products">
 			<div class="card-header d-flex justify-content-between align-items-center">
-				<h4>Categorieën</h4>
+				<h4 class="mb-0">Categorieën</h4>
 			</div>
 			<div class="table-responsive">
 				<table class="table card-table mb-0 table-striped">
