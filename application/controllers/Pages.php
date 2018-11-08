@@ -7,6 +7,9 @@
 			
 			$data['title'] = ucfirst($page);
 			
+			$data['loans'] = $this->Borrowed_model->get_loans();
+			$data['categories'] = $this->category_model->get_categories();
+			
 			$this->load->view('templates/header');
 			$this->load->view('pages/'.$page, $data);
 			$this->load->view('templates/footer');

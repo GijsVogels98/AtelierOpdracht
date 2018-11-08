@@ -33,7 +33,7 @@
 						<td class="product"><a href="<?=site_url('/producten/' . $loan['slug'])?>"><?=$loan['name']?></a></td>
 						<td class="name"><?=$loan['customer_name']?></td>
 						<?php $timestamp_borrowed_till = strtotime($loan['borrowed_till']); ?>
-						<td class="date text-lowercase <?php if (date('Y/m/d', time()) >= date('Y/m/d', $timestamp_borrowed_till)) { echo 'text-red'; } ?>">
+						<td class="date text-lowercase <?php if (date('Y/m/d', time()) > date('Y/m/d', $timestamp_borrowed_till)) { echo 'text-red'; } elseif (date('Y/m/d', time()) == date('Y/m/d', $timestamp_borrowed_till)) { echo 'text-orange'; } ?>">
 							<?=date('j F Y', $timestamp_borrowed_till);?>
 						</td>
                   <td class="d-flex justify-content-end align-items-center">
@@ -60,7 +60,7 @@
 											<div>
 												<small>tot:</small>
 												<?php $timestamp_borrowed_till = strtotime($loan['borrowed_till']); ?>
-												<span <?php if (date('Y/m/d', time()) >= date('Y/m/d', $timestamp_borrowed_till)) { echo 'class="text-red"'; } ?>>
+												<span <?php if (date('Y/m/d', time()) > date('Y/m/d', $timestamp_borrowed_till)) { echo 'class="text-red"'; } elseif (date('Y/m/d', time()) == date('Y/m/d', $timestamp_borrowed_till)) { echo 'class="text-orange"'; } ?>>
 												<?=date('j F Y', $timestamp_borrowed_till)?>
 												</span>
 											</div>
@@ -106,5 +106,6 @@
                </tr>
 				<?php endforeach; ?>
 			</tbody>
+		</table>
 	</div>
 </div>
