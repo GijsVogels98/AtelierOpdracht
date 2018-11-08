@@ -35,6 +35,7 @@
 			$this->form_validation->set_rules('body', 'Aantal', 'required', array('required'=>'Het veld aantal is verplicht!'));
 			
 			if ($this->form_validation->run()) {
+				$this->session->set_flashdata('product_created', 'Je product is toegevoegd!');
 				redirect('/producten/' . $this->Product_model->create_product());
 			}
 			

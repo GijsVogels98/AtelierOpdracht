@@ -29,6 +29,8 @@
 				
 				$this->category_model->create_category();
 				
+				$this->session->set_flashdata('category_created', 'Je categorie is toegevoegd');
+				
 				redirect('categorieen');
 				
 			}
@@ -49,6 +51,8 @@
 		public function delete($id) {
 			
 			$this->category_model->delete_category($id);
+			
+			$this->session->set_flashdata('category_deleted', 'Je categorie is verwijderd');
 			
 			redirect('categorieen');
 			
