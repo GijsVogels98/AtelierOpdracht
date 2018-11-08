@@ -60,7 +60,6 @@
                 'slug' => $slug,
                 'body' => $this->input->post('body'),
                 'count' => $this->input->post('count'),
-                'available' => $this->input->post('count'),
                 'category_id' => $this->input->post('category_id'),
             );
             $this->db->where('product_id', $this->input->post('id'));
