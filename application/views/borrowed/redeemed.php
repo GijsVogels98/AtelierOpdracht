@@ -7,8 +7,9 @@
 		</form>
 		<div>
 			<a href="<?php echo base_url(); ?>lenen" class="btn btn-secondary">Openstaande leningen</a>
-			<a href="<?php echo base_url(); ?>lenen/nieuw" class="btn btn-primary">Nieuwe Lening</a>
+			<a href="<?php echo base_url(); ?>lenen/ingeleverd" class="btn btn-primary">Afgeronde leningen</a>
 		</div>
+		<a href="<?php echo base_url(); ?>lenen/nieuw" class="btn btn-primary">Nieuwe Lening</a>
 	</div>
 	<div class="table-responsive">
 		<table class="table card-table mb-0 table-striped">
@@ -18,6 +19,7 @@
 					<th>Naam</th>
 					<th>E-mailadres</th>
 					<th>Inleverdatum</th>
+					<th>Uitgeleend door</th>
                <th></th>
 				</tr>
 			</thead>
@@ -33,8 +35,9 @@
 								echo date('j F Y', $timestamp);
 							?>
 						</td>
+						<td></td>
                   <td class="d-flex justify-content-end align-items-center">
-	                  <?php echo form_open('/borrowed/redeem/'.$loan['id']); ?>
+	                  <?php echo form_open('/borrowed/deredeem/'.$loan['id']); ?>
 	                  	<input type="hidden" value="no" name="returned">
                     		<button type="submit" class="btn btn-danger" style="font-size: 16px !important;"><i class="fas fa-times"></i></button>
                      </form>
