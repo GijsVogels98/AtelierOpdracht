@@ -1,6 +1,5 @@
 <h2><?=$title?></h2>
 
-<?php if($products) { ?>
 <div class="card mb-4" id="products">
 	<div class="card-header d-flex justify-content-between align-items-center">
 		<form class="form-inline mb-0">
@@ -43,4 +42,3 @@
 			</tbody>
 	</div>
 </div>
-<?php } ?>
