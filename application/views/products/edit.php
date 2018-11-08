@@ -25,7 +25,7 @@
     </select>
 </div>
 <div class="form-group">
-    <button type="submit" class="btn btn-primary" id="submit" name="submit">Voeg product toe</button>
+    <button type="submit" class="btn btn-primary" id="submit" name="submit">Edit</button>
 </div>
 
 </form>
