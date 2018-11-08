@@ -41,6 +41,9 @@
 							</li>
 						</ul>
 						<ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link text-white text-uppercase" href="<?php echo base_url(); ?>users/register">Register</a>
+                            </li>
 							<?php if (!$this->session->userdata('logged_in')) { ?>
 							<li class="nav-item">
 								<a class="nav-link text-white text-uppercase" href="<?php echo base_url(); ?>users/login">Log in</a>
