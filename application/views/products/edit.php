@@ -25,7 +25,7 @@
     </select>
 </div>
 <div class="form-group">
-    <button type="submit" class="btn btn-primary" id="submit" name="submit">Edit</button>
+    <button type="submit" class="btn btn-primary" id="submit" name="submit">Bewerk product</button>
     <br>
 </div>
 
