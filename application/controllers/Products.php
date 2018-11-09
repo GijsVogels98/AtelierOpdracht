@@ -67,6 +67,9 @@
 
       public function update(){
 		    $this->Product_model->update_post();
+
+            $this->session->set_flashdata('product_updated','Het product is bewerkt.');
+
 		    redirect('producten');
       }
 

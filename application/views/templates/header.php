@@ -61,39 +61,35 @@
 		</header>
 		
 		<main>
-			<div class="container">
-				<?php if ($this->session->flashdata('user_registered')) { ?>
-					<div class="alert alert-success" role="alert">
-						<strong>Succes!</strong> <?php echo $this->session->flashdata('user_registered'); ?>
-					</div>
-				<?php } ?>
-								
-				
-				
+			<div class="container" style="margin-bottom: 20px">
+
+
+
+
 				<?php if ($this->session->flashdata('user_loggedin')) { ?>
 					<div class="alert alert-success" role="alert">
 						<strong>Succes!</strong> <?php echo $this->session->flashdata('user_loggedin'); ?>
 					</div>
 				<?php } ?>
-				
+
 				<?php if ($this->session->flashdata('login_failed')) { ?>
 					<div class="alert alert-danger" role="alert">
 						<strong>Danger!</strong> <?php echo $this->session->flashdata('login_failed'); ?>
 					</div>
 				<?php } ?>
-				
+
 				<?php if ($this->session->flashdata('user_loggedout')) { ?>
 					<div class="alert alert-success" role="alert">
 						<strong>Succes!</strong> <?php echo $this->session->flashdata('user_loggedout'); ?>
 					</div>
 				<?php } ?>
-				
+
 				<?php if ($this->session->flashdata('user_delete_error')) { ?>
 					<div class="alert alert-danger" role="alert">
 						<strong>Danger!</strong> <?php echo $this->session->flashdata('user_delete_error'); ?>
 					</div>
 				<?php } ?>
-				
+
 				<?php if ($this->session->flashdata('user_deleted')) { ?>
 					<div class="alert alert-success" role="alert">
 						<strong>Succes!</strong> <?php echo $this->session->flashdata('user_deleted'); ?>
@@ -103,6 +99,18 @@
 				
 				
 				<?php /* deze worden nu gebruikt */ ?>
+
+                <?php if ($this->session->flashdata('user_registered')) { ?>
+                    <div class="alert alert-success" role="alert">
+                        <strong>Succes!</strong> <?php echo $this->session->flashdata('user_registered'); ?>
+                    </div>
+                <?php } ?>
+
+                <?php if ($this->session->flashdata('product_updated')) { ?>
+                    <div class="alert alert-success" role="alert">
+                        <strong>Succes!</strong> <?php echo $this->session->flashdata('product_updated'); ?>
+                    </div>
+                <?php } ?>
 				
 				<?php if ($this->session->flashdata('product_deleted')) { ?>
 				  <div class="alert alert-success" role="alert">
@@ -114,6 +122,7 @@
 				      <strong>Succes!</strong> <?php echo $this->session->flashdata('product_created'); ?>
 				  </div>
 				<?php } ?>
+
 				
 				
 				<?php if ($this->session->flashdata('category_created')) { ?>
