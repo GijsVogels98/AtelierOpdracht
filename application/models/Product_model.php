@@ -22,7 +22,6 @@
 				'slug' => $slug,
 				'body' => $this->input->post('body'),
 				'count' => $this->input->post('count'),
-				'available' => $this->input->post('count'),
 				'category_id' => $this->input->post('category_id'),
 			);
 			
@@ -52,20 +51,35 @@
 			
 		}
 
-        public function update_post(){
-            $slug = url_title($this->input->post('name'));
+		public function update_post(){
+         $slug = url_title($this->input->post('name'));
 
-            $data = array(
-                'name' => $this->input->post('name'),
-                'slug' => $slug,
-                'body' => $this->input->post('body'),
-                'count' => $this->input->post('count'),
-                'available' => $this->input->post('count'),
-                'category_id' => $this->input->post('category_id'),
-            );
-            $this->db->where('product_id', $this->input->post('id'));
-            return $this->db->update('products', $data);
-
-
-        }
+         $data = array(
+             'name' => $this->input->post('name'),
+             'slug' => $slug,
+             'body' => $this->input->post('body'),
+             'count' => $this->input->post('count'),
+             'category_id' => $this->input->post('category_id'),
+         );
+         $this->db->where('product_id', $this->input->post('id'));
+         return $this->db->update('products', $data);
+     	}
+		
+		public function product_plus_one() {
+			
+			$this->db->where('product_id', $this->input->post('product_id'));
+			$this->db->set('product_lent', 'product_lent+1', FALSE);
+			$this->db->update('products');
+			
+			return true;
+		}
+		
+		public function product_min_one() {
+			
+			$this->db->where('product_id', $this->input->post('product_id'));
+			$this->db->set('product_lent', 'product_lent-1', FALSE);
+			$this->db->update('products');
+			
+			return true;
+		}
 	}

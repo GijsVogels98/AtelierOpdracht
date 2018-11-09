@@ -13,6 +13,7 @@ $route['categorieen/producten/(:any)'] = 'categories/posts/$1';
 
 $route['lenen'] = 'borrowed/index';
 $route['lenen/ingeleverd'] = 'borrowed/redeemed';
+$route['lenen/nieuw'] = 'borrowed/create';
 
 $route['default_controller'] = 'pages/view';
 $route['(:any)'] = 'pages/view/$1';

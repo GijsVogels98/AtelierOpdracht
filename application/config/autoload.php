@@ -133,5 +133,9 @@ $autoload['language'] = array();
 |	$autoload['model'] = array('first_model' => 'first');
 */
 
+<<<<<<< HEAD
 $autoload['model'] = array('Product_model', 'category_model','user_model','Borrowed_model');
 
+=======
+$autoload['model'] = array('Product_model', 'category_model','user_model','Borrowed_model');
+>>>>>>> 8c577784174b0ba7ae439002f047a02af99aad96

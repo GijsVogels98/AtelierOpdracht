@@ -32,7 +32,7 @@
 			$data['categories'] = $this->Product_model->get_categories();
 			
 			$this->form_validation->set_rules('name', 'Naam', 'required', array('required'=>'Het veld naam is verplicht!'));
-			$this->form_validation->set_rules('body', 'Aantal', 'required', array('required'=>'Het veld aantal is verplicht!'));
+			$this->form_validation->set_rules('count', 'Aantal', 'required', array('required'=>'Het veld aantal is verplicht!'));
 			
 			if ($this->form_validation->run()) {
 				$this->session->set_flashdata('product_created', 'Je product is toegevoegd!');

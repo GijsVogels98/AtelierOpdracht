@@ -16,7 +16,7 @@ a:hover { text-decoration: none; }
 
 #cke_18 { display: none; }
 
-.text-green { color: #00ff17; }
+.text-green { color: #28a745; }
 .text-orange { color: #ff9900; }
 .text-red { color: #ff0000; }
 .bg-black { background-color: #000; }
@@ -27,5 +27,5 @@ a:hover { text-decoration: none; }
 
 form { margin: 0; }
 .table td, .table th { vertical-align: middle; border: 0; padding: .30rem 1rem; }
-
+.table td .btn { padding: .1rem .4rem; }
 .navbar-brand svg { width: 180px; height: 24px; }

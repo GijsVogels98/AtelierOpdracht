@@ -13,31 +13,26 @@
 				<tr>
 					<th>Naam</th>
 					<th>Categorie</th>
-					<th>Beschikbaar</th>
+					<th class="text-center">Beschikbaar</th>
                <th></th>
 				</tr>
 			</thead>
 			<tbody class="list">
 				<?php foreach($products as $product): ?>
+				<?php $available = ($product['count']-$product['product_lent']);?>
 					<tr>
 						<td class="name"><a href="<?=site_url('/producten/' . $product['slug'])?>"><?=$product['name']?></a></td>
 						<td><?=$product['category_name']?></td>
-						<?php if ($product['available'] > 2 || $product['available'] == $product['count']) { ?>
-							<td class="text-green"><?=$product['available']?></td>
-						<?php } elseif ($product['available'] == 0) { ?>
-							<td class="text-red">Niet beschikbaar</td>
-						<?php } elseif ($product['available'] <= 2) { ?>
-							<td class="text-orange"><?=$product['available']?></td>
-						<?php } ?>
-                        <td class="d-flex justify-content-end align-items-center">
-	                        <?php if ($title == 'Producten') { ?>
-	                        <a class="btn btn-light mr-1" href="<?php echo base_url(); ?>producten/bewerken/<?php echo $product['slug']; ?>"><i class="fas fa-pencil-alt"></i></a>
-	                        <?php } ?>
-                           <?php echo form_open('/products/delete/'.$product['product_id']); ?>
-                           	<button type="submit" class="btn btn-danger" style="font-size: 16px !important;"><i class="fas fa-times"></i></button>
-                           </form>
-                        </td>
-                    </tr>
+						<td class="text-center"><?=$available?></td>
+                  <td class="d-flex justify-content-end align-items-center">
+                     <?php if ($title == 'Producten') { ?>
+                     <a class="btn btn-light mr-1" href="<?php echo base_url(); ?>producten/bewerken/<?php echo $product['slug']; ?>"><i class="fas fa-pencil-alt"></i></a>
+                     <?php } ?>
+                     <?php echo form_open('/products/delete/'.$product['product_id']); ?>
+                     	<button type="submit" class="btn btn-danger" style="font-size: 16px !important;"><i class="fas fa-times"></i></button>
+                     </form>
+                  </td>
+              </tr>
 				<?php endforeach; ?>
 			</tbody>
 	</div>
