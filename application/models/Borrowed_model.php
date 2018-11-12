@@ -37,6 +37,7 @@
 				'borrowed_till' => $this->input->post('borrowed_till'),
 				'product_id' => $this->input->post('product_id'),
 				'returned' => 'no',
+				'for_what' => $this->input->post('for_what'),
 				'note_before' => $this->input->post('note_before'),
 			);
 			

@@ -32,6 +32,10 @@
 		</select>
   </div>
   <div class="form-group">
+    <label for="for_what">Waar wordt het product voor gebruikt?</label>
+    <textarea  name="for_what" class="form-control"></textarea>
+  </div>
+  <div class="form-group">
     <label for="note_before">Opmerking voor het lenen</label>
     <textarea  name="note_before" class="form-control"></textarea>
   </div>
