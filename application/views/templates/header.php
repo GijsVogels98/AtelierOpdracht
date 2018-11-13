@@ -39,6 +39,9 @@
 							<li class="nav-item">
 								<a class="nav-link text-white text-uppercase" href="<?php echo base_url(); ?>categorieen">Categorieën</a>
 							</li>
+							<li class="nav-item">
+								<a class="nav-link text-white text-uppercase" href="<?php echo base_url(); ?>aanvragen">Aanvragen</a>
+							</li>
 						</ul>
 						<ul class="navbar-nav">
 							<?php if (!$this->session->userdata('logged_in')) { ?>
