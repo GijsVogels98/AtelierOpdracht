@@ -99,17 +99,17 @@
 				
 				<?php /* deze worden nu gebruikt */ ?>
 
-                <?php if ($this->session->flashdata('user_registered')) { ?>
-                    <div class="alert alert-success" role="alert">
-                        <strong>Succes!</strong> <?php echo $this->session->flashdata('user_registered'); ?>
-                    </div>
-                <?php } ?>
-
-                <?php if ($this->session->flashdata('product_updated')) { ?>
-                    <div class="alert alert-success" role="alert">
-                        <strong>Succes!</strong> <?php echo $this->session->flashdata('product_updated'); ?>
-                    </div>
-                <?php } ?>
+				<?php if ($this->session->flashdata('user_registered')) { ?>
+				  <div class="alert alert-success" role="alert">
+				      <strong>Succes!</strong> <?php echo $this->session->flashdata('user_registered'); ?>
+				  </div>
+				<?php } ?>
+				
+				<?php if ($this->session->flashdata('product_updated')) { ?>
+				  <div class="alert alert-success" role="alert">
+				      <strong>Succes!</strong> <?php echo $this->session->flashdata('product_updated'); ?>
+				  </div>
+				<?php } ?>
 				
 				<?php if ($this->session->flashdata('product_deleted')) { ?>
 				  <div class="alert alert-success" role="alert">
@@ -120,6 +120,18 @@
 				  <div class="alert alert-success" role="alert">
 				      <strong>Succes!</strong> <?php echo $this->session->flashdata('product_created'); ?>
 				  </div>
+				<?php } ?>
+				
+				
+				<?php if ($this->session->flashdata('email_sent')) { ?>
+				  <div class="alert alert-success" role="alert">
+				      <strong>Succes!</strong> <?php echo $this->session->flashdata('email_sent'); ?>
+				  </div>
+				<?php } ?>
+				<?php if ($this->session->flashdata('email_error')) { ?>
+					<div class="alert alert-danger" role="alert">
+						<strong>Danger!</strong> <?php echo $this->session->flashdata('email_error'); ?>
+					</div>
 				<?php } ?>
 
 				

@@ -1,11 +1,11 @@
-<h2><?=$title?></h2>
+<h2>Producten aanvragen</h2>
 
 <?=validation_errors('<div class="alert alert-danger"><strong>Opgelet!</strong> ', '</div>')?>
 
-<?=form_open('pages/send')?>
+<?=form_open('pages/send_mail')?>
   <div class="form-group">
     <label for="customer_name">Naam</label>
-    <input type="text" class="form-control" id="customer_name" name="customer_name" placeholder="Voer hier de naam van de lener in...">
+    <input type="text" class="form-control" id="name" name="name" placeholder="Voer hier de naam van de lener in...">
   </div>
   <div class="form-group">
     <label for="student_number">Leerlingnummer</label>
@@ -13,7 +13,7 @@
   </div>
   <div class="form-group">
     <label for="customer_email">E-mailadres</label>
-    <input type="email" class="form-control" id="customer_email" name="customer_email" placeholder="Voer hier het e-mailadres van de lener in...">
+    <input type="email" class="form-control" id="email" name="email" placeholder="Voer hier het e-mailadres van de lener in...">
   </div>
   <div class="row">
 	  <div class="col-md-6">
