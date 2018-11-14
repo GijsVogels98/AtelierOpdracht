@@ -38,21 +38,17 @@
 							<li class="nav-item">
 								<a class="nav-link text-white text-uppercase" href="<?php echo base_url(); ?>categorieen">Categorieën</a>
 							</li>
+							<?php if (!$this->session->userdata('logged_in')) { ?>
 							<li class="nav-item">
 								<a class="nav-link text-white text-uppercase" href="<?php echo base_url(); ?>aanvragen">Aanvragen</a>
 							</li>
+							<?php } ?>
 						</ul>
 						<ul class="navbar-nav">
-<<<<<<< HEAD
-                            <li class="nav-item">
-                                <a class="nav-link text-white text-uppercase" href="<?php echo base_url(); ?>users/register">Registreren</a>
-                            </li>
-=======
->>>>>>> 0a02862f455d8a0061973c2d6f0a5bf470983eab
 							<?php if (!$this->session->userdata('logged_in')) { ?>
 							<li class="nav-item">
-                        <a class="nav-link text-white text-uppercase" href="<?php echo base_url(); ?>users/register">Register</a>
-                     </li>
+                          <a class="nav-link text-white text-uppercase" href="<?php echo base_url(); ?>users/register">Registreren</a>
+                      </li>
 							<li class="nav-item">
 								<a class="nav-link text-white text-uppercase" href="<?php echo base_url(); ?>users/login">Log in</a>
 							</li>
