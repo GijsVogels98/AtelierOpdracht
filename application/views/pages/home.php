@@ -1,3 +1,4 @@
+<?php if ($this->session->userdata('logged_in')) { ?>
 <div class="row">
 	<div class="col-md-12">
 		<div class="card mb-4" id="products">
@@ -239,3 +240,4 @@
 		</div>
 	</div>
 </div>
+<?php } ?>

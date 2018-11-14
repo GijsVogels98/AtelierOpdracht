@@ -16,6 +16,9 @@ $route['lenen/ingeleverd'] = 'borrowed/redeemed';
 $route['lenen/nieuw'] = 'borrowed/create';
 $route['aanvragen'] = 'borrowed/request';
 
+$route['login'] = 'users/login';
+$route['registreren'] = 'users/register';
+
 $route['default_controller'] = 'pages/view';
 $route['(:any)'] = 'pages/view/$1';
 $route['404_override'] = '';

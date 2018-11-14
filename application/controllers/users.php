@@ -22,7 +22,7 @@
                 //set messages
                 $this->session->set_flashdata('user_registered','Gebruiker Geregistreerd');
 
-                redirect('producten');
+                redirect('login');
             }
         }
         //login user
@@ -58,12 +58,12 @@
                     //set messages
                     $this->session->set_flashdata('user_loggedin','U bent ingelogd.');
 
-                    redirect('producten');
+                    redirect('/');
                 }else{
                     //set messages
                     $this->session->set_flashdata('login_failed','Wachtwoord en gebruikersnaam komen niet overeen.');
 
-                    redirect('users/login');
+                    redirect('login');
                 }
             }
         }
@@ -75,7 +75,7 @@
             $this->session->unset_userdata('username');
 
             $this->session->set_flashdata('user_loggedout','U bent uitgelogd');
-            redirect('users/login');
+            redirect('login');
         }
 
         //check if username exists
