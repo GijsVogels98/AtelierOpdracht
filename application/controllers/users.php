@@ -69,6 +69,12 @@
         }
         //log user out
         public function logout(){
+	        
+	        if (!$this->session->userdata('logged_in')) {
+				$this->session->set_flashdata('no_rights', 'Je moet ingelogd zijn om uit te kunnen loggen');
+				redirect('login');
+				}
+	        
             //unset userdata
             $this->session->unset_userdata('logged_in');
             $this->session->unset_userdata('user_id');

@@ -15,6 +15,11 @@
 		
 		public function create() {
 			
+			if (!$this->session->userdata('logged_in')) {
+				$this->session->set_flashdata('no_rights', 'Je hebt geen rechten tot deze pagina');
+				redirect('login');
+			}
+			
 			$data['title'] = 'Nieuw categorie';
 			
 			$this->form_validation->set_rules('category_name', 'Name', 'required', array('required'=>'Het veld naam is verplicht!'));
@@ -49,6 +54,11 @@
 		}
 		
 		public function delete($id) {
+			
+			if (!$this->session->userdata('logged_in')) {
+				$this->session->set_flashdata('no_rights', 'Je hebt geen rechten tot deze pagina');
+				redirect('login');
+			}
 			
 			$this->category_model->delete_category($id);
 			

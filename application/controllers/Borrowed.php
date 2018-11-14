@@ -14,6 +14,11 @@
 		
 		public function redeemed() { 
 			
+			if (!$this->session->userdata('logged_in')) {
+				$this->session->set_flashdata('no_rights', 'Je hebt geen rechten tot deze pagina');
+				redirect('login');
+			}
+			
 			$data['title'] = 'Afgeronde leningen';
 			
 			$data['loans'] = $this->Borrowed_model->get_loans();
@@ -25,6 +30,12 @@
 		}
 		
 		public function redeem($id) {
+			
+			if (!$this->session->userdata('logged_in')) {
+				$this->session->set_flashdata('no_rights', 'Je hebt geen rechten tot deze pagina');
+				redirect('login');
+			}
+			
          $this->Borrowed_model->redeem_loan($id);
          $this->Product_model->product_min_one();
          $this->session->set_flashdata('redeem_product', 'Je lening is afgelost.');
@@ -32,6 +43,12 @@
    	}
    	
    	public function deredeem($id) {
+	   	
+	   	if (!$this->session->userdata('logged_in')) {
+				$this->session->set_flashdata('no_rights', 'Je hebt geen rechten tot deze pagina');
+				redirect('login');
+			}
+	   	
          $this->Borrowed_model->redeem_loan($id);
          $this->Product_model->product_plus_one();
          $this->session->set_flashdata('redeem_product', 'De lening is toegevoegd aan de openstaande leningen lijst');
@@ -39,6 +56,12 @@
    	}
    	
    	public function create() {
+	   	
+	   	if (!$this->session->userdata('logged_in')) {
+				$this->session->set_flashdata('no_rights', 'Je hebt geen rechten tot deze pagina');
+				redirect('login');
+			}
+	   	
 			$data['title'] = 'Nieuwe lening';
 			
 			$data['products'] = $this->Product_model->get_products();
@@ -81,6 +104,12 @@
 		}
 		
 		public function accept_request($id) {
+			
+			if (!$this->session->userdata('logged_in')) {
+				$this->session->set_flashdata('no_rights', 'Je hebt geen rechten tot deze pagina');
+				redirect('login');
+			}
+			
          $this->Borrowed_model->accept_request($id);
          //$this->Product_model->product_min_one();
          $this->session->set_flashdata('redeem_product', 'De lening is geaccepteerd');
@@ -88,6 +117,12 @@
    	}
    	
    	public function denied_request($id) {
+	   	
+	   	if (!$this->session->userdata('logged_in')) {
+				$this->session->set_flashdata('no_rights', 'Je hebt geen rechten tot deze pagina');
+				redirect('login');
+			}
+	   	
          $this->Borrowed_model->denied_request($id);
          //$this->Product_model->product_plus_one();
          $this->session->set_flashdata('redeem_product', 'De lening is geweigerd');
