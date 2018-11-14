@@ -68,9 +68,6 @@
 		<main>
 			<div class="container" style="margin-bottom: 20px">
 
-
-
-
 				<?php if ($this->session->flashdata('user_loggedin')) { ?>
 					<div class="alert alert-success" role="alert">
 						<strong>Succes!</strong> <?php echo $this->session->flashdata('user_loggedin'); ?>
