@@ -25,7 +25,9 @@
 				<?php 
 					$i = 0;
 					foreach($loans as $loan): 
-					if ($loan['returned'] === 'no'): continue; endif; 
+					if ($loan['returned'] === 'no'): continue; endif;
+					if ($loan['request'] === 'true'): continue; endif;
+					if ($loan['request'] === 'denied'): continue; endif;
 					$i++;
 				?>
 					<tr>
@@ -84,6 +86,12 @@
 										<div class="product mt-3">
 											<small>Geleend product:</small> <a href="<?=site_url('/producten/' . $loan['slug'])?>"><?=$loan['name']?></a>
 										</div>
+										<?php if (!empty($loan['for_what'])) { ?>
+										<div class="note_before mt-4">
+											<small>Waarvoor:</small>
+											<p><?=$loan['for_what']?></p>
+										</div>
+										<?php } ?>
 										
 										<?php if (!empty($loan['note_before'])) { ?>
 										<div class="note_before mt-4">

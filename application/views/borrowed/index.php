@@ -29,6 +29,8 @@
 					$i++;
 					?>
 				<?php if ($loan['returned'] === 'yes'): continue; endif; ?>
+				<?php if ($loan['request'] === 'true'): continue; endif; ?>
+				<?php if ($loan['request'] === 'denied'): continue; endif; ?>
 					<tr>
 						<td class="product"><a href="<?=site_url('/producten/' . $loan['slug'])?>"><?=$loan['name']?></a></td>
 						<td class="name"><?=$loan['customer_name']?></td>
@@ -83,6 +85,12 @@
 										<div class="product mt-3">
 											<small>Geleend product:</small> <a href="<?=site_url('/producten/' . $loan['slug'])?>"><?=$loan['name']?></a>
 										</div>
+										<?php if (!empty($loan['for_what'])) { ?>
+										<div class="note_before mt-4">
+											<small>Waarvoor:</small>
+											<p><?=$loan['for_what']?></p>
+										</div>
+										<?php } ?>
 										
 										<?php if (!empty($loan['note_before'])) { ?>
 										<div class="note_before mt-4">

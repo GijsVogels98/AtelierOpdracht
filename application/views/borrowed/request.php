@@ -2,7 +2,7 @@
 
 <?=validation_errors('<div class="alert alert-danger"><strong>Opgelet!</strong> ', '</div>')?>
 
-<?=form_open('borrowed/create')?>
+<?=form_open('borrowed/request')?>
   <div class="form-group">
     <label for="customer_name">Naam</label>
     <input type="text" class="form-control" id="customer_name" name="customer_name" placeholder="Voer hier de naam van de lener in...">
@@ -18,6 +18,10 @@
   <div class="form-group">
     <label for="customer_phone">Telefoonnummer (Optioneel)</label>
     <input type="text" class="form-control" id="customer_phone" name="customer_phone" placeholder="Voer hier het telefoonnummer van de lener in...">
+  </div>
+  <div class="form-group">
+    <label for="borrowed_at">Leendatum</label>
+    <input type="date" class="form-control" id="borrowed_at" name="borrowed_at">
   </div>
   <div class="form-group">
     <label for="borrowed_till">Inleverdatum</label>
@@ -38,10 +42,6 @@
     <textarea  name="for_what" class="form-control"></textarea>
   </div>
   <div class="form-group">
-    <label for="note_before">Opmerking voor het lenen</label>
-    <textarea  name="note_before" class="form-control"></textarea>
-  </div>
-  <div class="form-group">
-    <button type="submit" class="btn btn-primary" id="submit" name="submit">Voeg lening toe</button>
+    <button type="submit" class="btn btn-primary" id="submit" name="submit">Vraag lening aan</button>
   </div>
 </form>
