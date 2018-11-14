@@ -17,6 +17,7 @@
 			<thead>
 				<tr>
 					<th>Product</th>
+					<th>Studentennummer</th>
 					<th>Naam</th>
 					<th>Inleverdatum</th>
                <th></th>
@@ -29,8 +30,11 @@
 					$i++;
 					?>
 				<?php if ($loan['returned'] === 'yes'): continue; endif; ?>
+				<?php if ($loan['request'] === 'true'): continue; endif; ?>
+				<?php if ($loan['request'] === 'denied'): continue; endif; ?>
 					<tr>
 						<td class="product"><a href="<?=site_url('/producten/' . $loan['slug'])?>"><?=$loan['name']?></a></td>
+						<td class="student_number"><?=$loan['student_number']?></td>
 						<td class="name"><?=$loan['customer_name']?></td>
 						<?php $timestamp_borrowed_till = strtotime($loan['borrowed_till']); ?>
 						<td class="date text-lowercase <?php if (date('Y/m/d', time()) > date('Y/m/d', $timestamp_borrowed_till)) { echo 'text-red'; } elseif (date('Y/m/d', time()) == date('Y/m/d', $timestamp_borrowed_till)) { echo 'text-orange'; } ?>">
@@ -83,6 +87,12 @@
 										<div class="product mt-3">
 											<small>Geleend product:</small> <a href="<?=site_url('/producten/' . $loan['slug'])?>"><?=$loan['name']?></a>
 										</div>
+										<?php if (!empty($loan['for_what'])) { ?>
+										<div class="note_before mt-4">
+											<small>Waarvoor:</small>
+											<p><?=$loan['for_what']?></p>
+										</div>
+										<?php } ?>
 										
 										<?php if (!empty($loan['note_before'])) { ?>
 										<div class="note_before mt-4">

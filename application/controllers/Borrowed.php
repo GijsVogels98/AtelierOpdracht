@@ -27,7 +27,7 @@
 		public function redeem($id) {
          $this->Borrowed_model->redeem_loan($id);
          $this->Product_model->product_min_one();
-         $this->session->set_flashdata('redeem_product', 'Het product is ingeleverd.');
+         $this->session->set_flashdata('redeem_product', 'Je lening is afgelost.');
          redirect('lenen');
    	}
    	
@@ -50,7 +50,7 @@
 			if ($this->form_validation->run()) {
 				$this->Borrowed_model->create_loan();
 				$this->Product_model->product_plus_one();
-				$this->session->set_flashdata('product_created', 'Je product is toegevoegd!');
+				$this->session->set_flashdata('product_created', 'Je lening is toegevoegd!');
 				redirect('lenen');
 			}
 			
@@ -58,4 +58,39 @@
 			$this->load->view('borrowed/create', $data);
 			$this->load->view('templates/footer');
 		}
+		
+		public function request() {
+			$data['title'] = 'Nieuwe lening aanvragen';
+			
+			$data['products'] = $this->Product_model->get_products();
+			
+			$this->form_validation->set_rules('customer_name', 'Naam', 'required', array('required'=>'Het veld naam is verplicht!'));
+			$this->form_validation->set_rules('customer_email', 'Email', 'required', array('required'=>'Het e-mailadres is een verplicht veld!'));
+			$this->form_validation->set_rules('borrowed_at', 'Naam', 'required', array('required'=>'De leendatum is een verplicht veld!'));
+			$this->form_validation->set_rules('borrowed_till', 'Naam', 'required', array('required'=>'De inleverdatum is een verplicht veld!'));
+			
+			if ($this->form_validation->run()) {
+				$this->Borrowed_model->request_loan();
+				$this->session->set_flashdata('product_created', 'Je lening is aangevraagd!');
+				redirect('/');
+			}
+			
+			$this->load->view('templates/header');
+			$this->load->view('borrowed/request', $data);
+			$this->load->view('templates/footer');
+		}
+		
+		public function accept_request($id) {
+         $this->Borrowed_model->accept_request($id);
+         //$this->Product_model->product_min_one();
+         $this->session->set_flashdata('redeem_product', 'De lening is geaccepteerd');
+         redirect('/');
+   	}
+   	
+   	public function denied_request($id) {
+         $this->Borrowed_model->denied_request($id);
+         //$this->Product_model->product_plus_one();
+         $this->session->set_flashdata('redeem_product', 'De lening is geweigerd');
+         redirect('/');
+   	}
 	}

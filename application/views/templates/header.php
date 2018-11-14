@@ -8,7 +8,6 @@
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 		<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/style.css?<?php echo time(); ?>">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-		<script src="//cdn.ckeditor.com/4.10.0/basic/ckeditor.js"></script>
 	</head>
 	<body>
 		<header class="mb-4">
@@ -31,25 +30,33 @@
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul class="navbar-nav mr-auto">
 							<li class="nav-item">
-								<a class="nav-link text-white text-uppercase" href="<?php echo base_url(); ?>categorieen">Categorieën</a>
-							</li>
-							<li class="nav-item">
 								<a class="nav-link text-white text-uppercase" href="<?php echo base_url(); ?>producten">Producten</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link text-white text-uppercase" href="<?php echo base_url(); ?>lenen">Lenen</a>
 							</li>
+							<li class="nav-item">
+								<a class="nav-link text-white text-uppercase" href="<?php echo base_url(); ?>categorieen">Categorieën</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link text-white text-uppercase" href="<?php echo base_url(); ?>aanvragen">Aanvragen</a>
+							</li>
 						</ul>
 						<ul class="navbar-nav">
+<<<<<<< HEAD
                             <li class="nav-item">
                                 <a class="nav-link text-white text-uppercase" href="<?php echo base_url(); ?>users/register">Registreren</a>
                             </li>
+=======
+>>>>>>> 0a02862f455d8a0061973c2d6f0a5bf470983eab
 							<?php if (!$this->session->userdata('logged_in')) { ?>
+							<li class="nav-item">
+                        <a class="nav-link text-white text-uppercase" href="<?php echo base_url(); ?>users/register">Register</a>
+                     </li>
 							<li class="nav-item">
 								<a class="nav-link text-white text-uppercase" href="<?php echo base_url(); ?>users/login">Log in</a>
 							</li>
-							<?php } ?>
-							<?php if ($this->session->userdata('logged_in')) { ?>
+							<?php } else { ?>
 							<li class="nav-item">
 								<a class="nav-link text-white text-uppercase" href="<?php echo base_url(); ?>users/logout">Log uit</a>
 							</li>
@@ -100,17 +107,17 @@
 				
 				<?php /* deze worden nu gebruikt */ ?>
 
-                <?php if ($this->session->flashdata('user_registered')) { ?>
-                    <div class="alert alert-success" role="alert">
-                        <strong>Succes!</strong> <?php echo $this->session->flashdata('user_registered'); ?>
-                    </div>
-                <?php } ?>
-
-                <?php if ($this->session->flashdata('product_updated')) { ?>
-                    <div class="alert alert-success" role="alert">
-                        <strong>Succes!</strong> <?php echo $this->session->flashdata('product_updated'); ?>
-                    </div>
-                <?php } ?>
+				<?php if ($this->session->flashdata('user_registered')) { ?>
+				  <div class="alert alert-success" role="alert">
+				      <strong>Succes!</strong> <?php echo $this->session->flashdata('user_registered'); ?>
+				  </div>
+				<?php } ?>
+				
+				<?php if ($this->session->flashdata('product_updated')) { ?>
+				  <div class="alert alert-success" role="alert">
+				      <strong>Succes!</strong> <?php echo $this->session->flashdata('product_updated'); ?>
+				  </div>
+				<?php } ?>
 				
 				<?php if ($this->session->flashdata('product_deleted')) { ?>
 				  <div class="alert alert-success" role="alert">
@@ -121,6 +128,18 @@
 				  <div class="alert alert-success" role="alert">
 				      <strong>Succes!</strong> <?php echo $this->session->flashdata('product_created'); ?>
 				  </div>
+				<?php } ?>
+				
+				
+				<?php if ($this->session->flashdata('email_sent')) { ?>
+				  <div class="alert alert-success" role="alert">
+				      <strong>Succes!</strong> <?php echo $this->session->flashdata('email_sent'); ?>
+				  </div>
+				<?php } ?>
+				<?php if ($this->session->flashdata('email_error')) { ?>
+					<div class="alert alert-danger" role="alert">
+						<strong>Danger!</strong> <?php echo $this->session->flashdata('email_error'); ?>
+					</div>
 				<?php } ?>
 
 				
