@@ -27,6 +27,13 @@
          return true;
       }
       
+      public function search_blog($stamnr){
+      	$this->db->like('stamnr', $stamnr , 'both');
+			$this->db->order_by('stamnr', 'ASC');
+			$this->db->limit(10);
+			return $this->db->get('students')->result();
+    	}
+      
       public function create_loan() {
 			
 			$data = array(
@@ -44,6 +51,7 @@
 			
 			return $this->db->insert('borrowed', $data);;
 		}
+
 		
 		public function request_loan() {
 			

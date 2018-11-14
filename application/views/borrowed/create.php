@@ -1,15 +1,15 @@
-<h2><?=$title?></h2>
+<h2>Lening aanmaken</h2>
 
 <?=validation_errors('<div class="alert alert-danger"><strong>Opgelet!</strong> ', '</div>')?>
 
 <?=form_open('borrowed/create')?>
+	<div class="form-group">
+    <label for="student_number">Leerlingnummer</label>
+    <input type="text" class="form-control" id="student_number" name="student_number" placeholder="Voer hier het leerlingnummer van de lener in...">
+  </div>
   <div class="form-group">
     <label for="customer_name">Naam</label>
     <input type="text" class="form-control" id="customer_name" name="customer_name" placeholder="Voer hier de naam van de lener in...">
-  </div>
-  <div class="form-group">
-    <label for="student_number">Leerlingnummer</label>
-    <input type="text" class="form-control" id="student_number" name="student_number" placeholder="Voer hier het leerlingnummer van de lener in...">
   </div>
   <div class="form-group">
     <label for="customer_email">E-mailadres</label>

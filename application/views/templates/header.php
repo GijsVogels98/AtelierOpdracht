@@ -5,6 +5,7 @@
 		<meta name="author" content="Stef Verstraten">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 		<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/bootstrap.min.css">
+		<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/jquery-ui.css">
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 		<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/style.css?<?php echo time(); ?>">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -71,6 +72,12 @@
 		
 		<main>
 			<div class="container" style="margin-bottom: 20px">
+			
+				<?php if ($this->session->flashdata('no_rights')) { ?>
+					<div class="alert alert-danger" role="alert">
+						<?php echo $this->session->flashdata('no_rights'); ?>
+					</div>
+				<?php } ?>
 
 				<?php if ($this->session->flashdata('user_loggedin')) { ?>
 					<div class="alert alert-success" role="alert">
@@ -92,7 +99,7 @@
 
 				<?php if ($this->session->flashdata('user_delete_error')) { ?>
 					<div class="alert alert-danger" role="alert">
-						<strong>Danger!</strong> <?php echo $this->session->flashdata('user_delete_error'); ?>
+						<?php echo $this->session->flashdata('user_delete_error'); ?>
 					</div>
 				<?php } ?>
 
@@ -137,7 +144,7 @@
 				<?php } ?>
 				<?php if ($this->session->flashdata('email_error')) { ?>
 					<div class="alert alert-danger" role="alert">
-						<strong>Danger!</strong> <?php echo $this->session->flashdata('email_error'); ?>
+						<?php echo $this->session->flashdata('email_error'); ?>
 					</div>
 				<?php } ?>
 

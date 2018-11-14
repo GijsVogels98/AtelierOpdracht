@@ -1,6 +1,11 @@
 <?php
 	class Borrowed extends CI_Controller { 
-		public function index() { 
+		public function index() {
+			
+			if (!$this->session->userdata('logged_in')) {
+				$this->session->set_flashdata('no_rights', 'Je hebt geen rechten tot deze pagina');
+				redirect('login');
+			}
 			
 			$data['title'] = 'Openstaande leningen';
 			
@@ -25,6 +30,23 @@
 			
 			$this->load->view('templates/header');
 			$this->load->view('borrowed/redeemed', $data);
+			$this->load->view('templates/footer');
+			
+		}
+		
+		public function denied_requests() { 
+			
+			if (!$this->session->userdata('logged_in')) {
+				$this->session->set_flashdata('no_rights', 'Je hebt geen rechten tot deze pagina');
+				redirect('login');
+			}
+			
+			$data['title'] = 'Afgewezen aanvragen';
+			
+			$data['loans'] = $this->Borrowed_model->get_loans();
+			
+			$this->load->view('templates/header');
+			$this->load->view('borrowed/denied', $data);
 			$this->load->view('templates/footer');
 			
 		}
@@ -55,6 +77,22 @@
          redirect('lenen/ingeleverd');
    	}
    	
+   	public function get_autocomplete(){
+        if (isset($_GET['term'])) {
+            $result = $this->Borrowed_model->search_blog($_GET['term']);
+            if (count($result) > 0) {
+            foreach ($result as $row)
+                $arr_result[] = $row->stamnr;
+                echo json_encode($arr_result);
+            }
+      	}
+      	
+      	$this->load->view('templates/header');
+			$this->load->view('borrowed/create');
+			$this->load->view('templates/footer');
+      	
+    	}
+   	
    	public function create() {
 	   	
 	   	if (!$this->session->userdata('logged_in')) {
@@ -81,6 +119,7 @@
 			$this->load->view('borrowed/create', $data);
 			$this->load->view('templates/footer');
 		}
+		
 		
 		public function request() {
 			$data['title'] = 'Nieuwe lening aanvragen';
