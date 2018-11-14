@@ -42,7 +42,7 @@
 						</ul>
 						<ul class="navbar-nav">
                             <li class="nav-item">
-                                <a class="nav-link text-white text-uppercase" href="<?php echo base_url(); ?>users/register">Register</a>
+                                <a class="nav-link text-white text-uppercase" href="<?php echo base_url(); ?>users/register">Registreren</a>
                             </li>
 							<?php if (!$this->session->userdata('logged_in')) { ?>
 							<li class="nav-item">
@@ -74,7 +74,7 @@
 
 				<?php if ($this->session->flashdata('login_failed')) { ?>
 					<div class="alert alert-danger" role="alert">
-						<strong>Danger!</strong> <?php echo $this->session->flashdata('login_failed'); ?>
+                        <?php echo $this->session->flashdata('login_failed'); ?>
 					</div>
 				<?php } ?>
 
