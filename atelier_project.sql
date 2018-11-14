@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Gegenereerd op: 13 nov 2018 om 11:26
+-- Gegenereerd op: 14 nov 2018 om 09:52
 -- Serverversie: 5.6.38
 -- PHP-versie: 7.2.1
 
@@ -41,25 +41,29 @@ CREATE TABLE `borrowed` (
   `product_id` int(11) NOT NULL,
   `for_what` text NOT NULL,
   `note_before` text NOT NULL,
-  `note_after` text NOT NULL
+  `note_after` text NOT NULL,
+  `request` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Gegevens worden geëxporteerd voor tabel `borrowed`
 --
 
-INSERT INTO `borrowed` (`id`, `student_number`, `customer_name`, `customer_email`, `customer_phone`, `user_id`, `borrowed_at`, `borrowed_till`, `returned`, `product_id`, `for_what`, `note_before`, `note_after`) VALUES
-(11, '', 'Stef Verstraten', 's.verstraten@sintlucasedu.nl', '0623661936', '', '2018-11-12 12:35:42', '2018-11-09 23:00:00', 'yes', 25, '', '', 'helemaal kut'),
-(12, '37431', 'Stef', 's.verstraten@sintlucasedu.nl', '', '', '2018-11-12 13:34:48', '2018-11-22 23:00:00', 'no', 28, '', 'Dit product was al half kapot', ''),
-(13, '372627', 'Gijs Vogels', 'gijs@hotmail.com', '623661936', '', '2018-11-08 19:51:33', '2018-11-15 23:00:00', 'no', 27, '', 'test', ''),
-(14, '37431', 'Stef Verstraten', 's.verstraten@sintlucasedu.nl', '623661936', '', '2018-11-08 20:24:34', '2018-11-07 23:00:00', 'yes', 27, '', '', ''),
-(15, '372627', 'Stef Verstraten', 's.verstraten@sintlucasedu.nl', '623661936', '', '2018-11-08 20:29:30', '2018-11-05 23:00:00', 'yes', 25, '', 'test', 'test'),
-(16, '34234', 'Stef Verstraten', 's.verstraten@sintlucasedu.nl', '623661936', '', '2018-11-12 13:18:09', '2018-11-04 23:00:00', 'yes', 28, '', 'test', ''),
-(17, '', 'Stef Verstraten', 's.verstraten@sintlucasedu.nl', '623661936', '', '2018-11-08 20:36:45', '2019-05-03 22:00:00', 'no', 28, '', '', ''),
-(18, '372627', 'Stef Verstraten', 's.verstraten@sintlucasedu.nl', '623661936', '', '2018-11-12 13:35:54', '2019-03-14 23:00:00', 'no', 28, '', '', ''),
-(19, '37431', 'test', 's.verstraten@sintlucasedu.nl', '623661936', '', '2018-11-12 14:11:00', '2018-11-14 23:00:00', 'yes', 28, 'presentatie', 'Deze student mag dit product lenen voor zijn of haar project', 'Netjes en in goede staat ingeleverd'),
-(20, '3743§', 'Stef Verstraten', 's.verstraten@sintlucasedu.nl', '623661936', '', '2018-11-12 14:11:25', '2018-11-06 23:00:00', 'no', 28, '', '', ''),
-(21, '37431', 'Stef Verstraten', 's.verstraten@sintlucasedu.nl', '623661936', '', '2018-11-13 09:34:11', '2018-11-14 23:00:00', 'no', 29, 'Tentoonstelling', '', '');
+INSERT INTO `borrowed` (`id`, `student_number`, `customer_name`, `customer_email`, `customer_phone`, `user_id`, `borrowed_at`, `borrowed_till`, `returned`, `product_id`, `for_what`, `note_before`, `note_after`, `request`) VALUES
+(11, '', 'Stef Verstraten', 's.verstraten@sintlucasedu.nl', '0623661936', '', '2018-11-14 08:57:36', '2018-11-09 23:00:00', 'yes', 25, '', '', 'helemaal kut', 'false'),
+(12, '37431', 'Stef', 's.verstraten@sintlucasedu.nl', '', '', '2018-11-14 08:57:39', '2018-11-22 23:00:00', 'no', 28, '', 'Dit product was al half kapot', '', 'false'),
+(13, '372627', 'Gijs Vogels', 'gijs@hotmail.com', '623661936', '', '2018-11-14 08:57:42', '2018-11-15 23:00:00', 'no', 27, '', 'test', '', 'false'),
+(14, '37431', 'Stef Verstraten', 's.verstraten@sintlucasedu.nl', '623661936', '', '2018-11-14 08:57:44', '2018-11-07 23:00:00', 'yes', 27, '', '', '', 'false'),
+(15, '372627', 'Stef Verstraten', 's.verstraten@sintlucasedu.nl', '623661936', '', '2018-11-14 08:57:46', '2018-11-05 23:00:00', 'yes', 25, '', 'test', 'test', 'false'),
+(16, '34234', 'Stef Verstraten', 's.verstraten@sintlucasedu.nl', '623661936', '', '2018-11-14 08:57:48', '2018-11-04 23:00:00', 'yes', 28, '', 'test', '', 'false'),
+(17, '', 'Stef Verstraten', 's.verstraten@sintlucasedu.nl', '623661936', '', '2018-11-14 08:57:50', '2019-05-03 22:00:00', 'no', 28, '', '', '', 'false'),
+(18, '372627', 'Stef Verstraten', 's.verstraten@sintlucasedu.nl', '623661936', '', '2018-11-14 08:57:53', '2019-03-14 23:00:00', 'no', 28, '', '', '', 'false'),
+(19, '37431', 'test', 's.verstraten@sintlucasedu.nl', '623661936', '', '2018-11-14 08:57:55', '2018-11-14 23:00:00', 'yes', 28, 'presentatie', 'Deze student mag dit product lenen voor zijn of haar project', 'Netjes en in goede staat ingeleverd', 'false'),
+(20, '3743§', 'Stef Verstraten', 's.verstraten@sintlucasedu.nl', '623661936', '', '2018-11-14 08:57:58', '2018-11-06 23:00:00', 'no', 28, '', '', '', 'false'),
+(21, '37431', 'Stef Verstraten', 's.verstraten@sintlucasedu.nl', '623661936', '', '2018-11-14 08:58:00', '2018-11-14 23:00:00', 'no', 29, 'Tentoonstelling', '', '', 'false'),
+(22, '37431', 'Gijs Vogels', 's.verstraten@sintlucasedu.nl', '0623661936', '', '2018-11-14 08:58:03', '2018-11-15 23:00:00', 'yes', 28, 'bier drinken', 'mooi', '', 'false'),
+(23, '123', 'pieter', 'p.hazenbosch@sintlucasedu.nl', '', '', '2018-11-14 09:42:05', '2018-11-22 23:00:00', 'no', 28, 'aanvraag', '', '', 'false'),
+(24, '37431', 'elvira', 's.verstraten@sintlucasedu.nl', '', '', '2018-11-14 09:43:02', '2018-11-29 23:00:00', 'no', 28, 'test', '', '', 'denied');
 
 -- --------------------------------------------------------
 
@@ -156,7 +160,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT voor een tabel `borrowed`
 --
 ALTER TABLE `borrowed`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT voor een tabel `categories`
