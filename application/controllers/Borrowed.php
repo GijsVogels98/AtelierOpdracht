@@ -94,22 +94,6 @@
          redirect('lenen/ingeleverd');
    	}
    	
-   	public function get_autocomplete(){
-        if (isset($_GET['term'])) {
-            $result = $this->Borrowed_model->search_blog($_GET['term']);
-            if (count($result) > 0) {
-            foreach ($result as $row)
-                $arr_result[] = $row->stamnr;
-                echo json_encode($arr_result);
-            }
-      	}
-      	
-      	$this->load->view('templates/header');
-			$this->load->view('borrowed/create');
-			$this->load->view('templates/footer');
-      	
-    	}
-   	
    	public function create() {
 	   	
 	   	if (!$this->session->userdata('logged_in')) {
@@ -184,7 +168,6 @@
          $this->session->set_flashdata('redeem_product', 'De lening is geweigerd');
          redirect('/');
    	}
-<<<<<<< HEAD
    	
    	public function delete($id) {
 			
@@ -197,33 +180,20 @@
          $this->session->set_flashdata('product_deleted', 'De lening is verwijderd.');
          redirect('lenen/ingeleverd');
    	}
+   	
+
+      
+      function get_autocomplete(){
+         if (isset($_GET['term'])) {
+             $result = $this->autoload_model->search_autoload($_GET['term']);
+             if (count($result) > 0) {
+                 foreach ($result as $row)
+                     $arr_result[] = array(
+                         'label'         => $row->stamnr,
+                         'description'   => $row->roepnaam,
+                     );
+                 echo json_encode($arr_result);
+             }
+         }
+      }
 	}
-=======
-//    function get_autocomplete(){
-//        if (isset($_GET['term'])) {
-//            $result = $this->autoload_model->search_autoload($_GET['term']);
-//            if (count($result) > 0) {
-//                foreach ($result as $row)
-//                    $arr_result[] = array(
-//                        'stamnr'         => $row->stamnr,
-//                        'roepnaam'   => $row->roepnaam,
-//                    );
-//                    echo json_encode($arr_result);
-//            }
-//        }
-//    }
-        function get_autocomplete(){
-            if (isset($_GET['term'])) {
-                $result = $this->autoload_model->search_autoload($_GET['term']);
-                if (count($result) > 0) {
-                    foreach ($result as $row)
-                        $arr_result[] = array(
-                            'label'         => $row->stamnr,
-                            'description'   => $row->roepnaam,
-                        );
-                    echo json_encode($arr_result);
-                }
-            }
-        }
-}
->>>>>>> ddf4f25bcb36d96c22ba558c5e9af08d94d5bc93
