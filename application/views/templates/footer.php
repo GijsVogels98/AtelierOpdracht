@@ -5,21 +5,21 @@
 		<script src="<?php echo base_url(); ?>assets/js/jquery-ui.js"></script>
 		<script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
 		<script src="<?php echo base_url(); ?>assets/js/default.js?<?=time()?>"></script>
-        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script>
-            <script type="text/javascript">
-                $(document).ready(function(){
+      <script type="text/javascript">
+          $(document).ready(function(){
 
-                    $('#student_number').autocomplete({
-                        source: "<?php echo site_url('borrowed/get_autocomplete');?>",
+              $('#student_number').autocomplete({
+                  source: "<?php echo site_url('borrowed/get_autocomplete');?>",
 
-                        select: function (event, ui) {
-                            $('[name="student_number"]').val(ui.item.label);
-                            $('[name="cutomer_name"]').val(ui.item.description);
-                        }
-                    });
+                  select: function(event, ui) {
+                      $('[name="student_number"]').val(ui.item.label);
+                      $('[name="customer_name"]').val(ui.item.name);
+                      $('[name="customer_email"]').val(ui.item.email);
+                  }
+              });
 
-                });
-            </script>
+          });
+      </script>
 	</body>
 	
 </html>
