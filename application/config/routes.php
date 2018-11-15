@@ -1,6 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+$route['blog'] = 'autoload/index';
+
 $route['producten/nieuw'] = 'products/create';
 $route['producten/update'] = 'products/update';
 $route['producten/(:any)'] = 'products/view/$1';

@@ -93,4 +93,30 @@
          $this->session->set_flashdata('redeem_product', 'De lening is geweigerd');
          redirect('/');
    	}
-	}
+//    function get_autocomplete(){
+//        if (isset($_GET['term'])) {
+//            $result = $this->autoload_model->search_autoload($_GET['term']);
+//            if (count($result) > 0) {
+//                foreach ($result as $row)
+//                    $arr_result[] = array(
+//                        'stamnr'         => $row->stamnr,
+//                        'roepnaam'   => $row->roepnaam,
+//                    );
+//                    echo json_encode($arr_result);
+//            }
+//        }
+//    }
+        function get_autocomplete(){
+            if (isset($_GET['term'])) {
+                $result = $this->autoload_model->search_autoload($_GET['term']);
+                if (count($result) > 0) {
+                    foreach ($result as $row)
+                        $arr_result[] = array(
+                            'label'         => $row->stamnr,
+                            'description'   => $row->roepnaam,
+                        );
+                    echo json_encode($arr_result);
+                }
+            }
+        }
+}
