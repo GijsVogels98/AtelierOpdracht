@@ -36,6 +36,14 @@
 							<?php if ($this->session->userdata('logged_in')) { ?>
 							<li class="nav-item">
 								<a class="nav-link text-white text-uppercase" href="<?php echo base_url(); ?>lenen">Lenen</a>
+								<ul class="dropdown p-0">
+									<li class="nav-item">
+										<a class="nav-link text-white text-uppercase" href="<?php echo base_url(); ?>aanvragen/geaccepteerd">Geaccepteerde aanvragen</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link text-white text-uppercase" href="<?php echo base_url(); ?>aanvragen/geweigerd">Geweigerde aanvragen</a>
+									</li>
+								</ul>
 							</li>
 							<?php } ?>
 							<li class="nav-item">

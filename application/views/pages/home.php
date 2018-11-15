@@ -24,6 +24,7 @@
 							if ($loan['returned'] === 'yes'): continue; endif;
 							if ($loan['request'] === 'false'): continue; endif;
 							if ($loan['request'] === 'denied'): continue; endif;
+							if ($loan['request'] === 'accepted'): continue; endif;
 							$timestamp_borrowed_at = strtotime($loan['borrowed_at']);
 							$timestamp_borrowed_till = strtotime($loan['borrowed_till']); 
 							$i++;

@@ -51,6 +51,23 @@
 			
 		}
 		
+		public function accepted_requests() { 
+			
+			if (!$this->session->userdata('logged_in')) {
+				$this->session->set_flashdata('no_rights', 'Je hebt geen rechten tot deze pagina');
+				redirect('login');
+			}
+			
+			$data['title'] = 'Geaccepteerde aanvragen';
+			
+			$data['loans'] = $this->Borrowed_model->get_loans();
+			
+			$this->load->view('templates/header');
+			$this->load->view('borrowed/accepted', $data);
+			$this->load->view('templates/footer');
+			
+		}
+		
 		public function redeem($id) {
 			
 			if (!$this->session->userdata('logged_in')) {

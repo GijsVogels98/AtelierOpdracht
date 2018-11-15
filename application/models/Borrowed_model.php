@@ -74,7 +74,7 @@
 		public function accept_request($id){
 		   
 		   $data = array(
-            'request' => 'false',
+            'request' => 'accepted',
          );
          
          $this->db->where('id', $id);
