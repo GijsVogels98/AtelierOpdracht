@@ -23,7 +23,7 @@
 					<tr>
 						<td class="name"><a href="<?=site_url('/producten/' . $product['slug'])?>"><?=$product['name']?></a></td>
 						<td><?=$product['category_name']?></td>
-						<td class="text-center"><?=$available?></td>
+						<td class="text-center"><?php if ($available != 0) { ?><?=$available?><?php } else { echo 'Niet beschikbaar'; } ?></td>
                   <?php if ($this->session->userdata('logged_in')) { ?>
                   <td class="d-flex justify-content-end align-items-center">
                      <?php if ($title == 'Producten') { ?>

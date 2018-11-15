@@ -14,7 +14,7 @@
 	</div>
 	<div class="form-group">
 	    <label for="count">Aantal</label>
-	    <input type="number" class="form-control" id="count" name="count" placeholder="Voer hier in hoeveel stuks er zijn..." value="<?php echo $product['count']; ?>">
+	    <input type="number" class="form-control" id="count" name="count" placeholder="Voer hier in hoeveel stuks er zijn..." value="<?php echo $product['count']; ?>" min="1">
 	</div>
 	<div class="form-group">
 	    <label for="category">Categorie</label>
