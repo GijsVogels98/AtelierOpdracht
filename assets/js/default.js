@@ -7,6 +7,12 @@
         };
         var productsList = new List('products', options);
     	}
+    	
+
+      $( "#student_number" ).autocomplete({
+      	source: "<?php echo site_url('borrowed/get_autocomplete/?');?>"
+      });
+
 
 	});
 

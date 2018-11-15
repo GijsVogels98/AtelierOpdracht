@@ -24,6 +24,7 @@
 							if ($loan['returned'] === 'yes'): continue; endif;
 							if ($loan['request'] === 'false'): continue; endif;
 							if ($loan['request'] === 'denied'): continue; endif;
+							if ($loan['request'] === 'accepted'): continue; endif;
 							$timestamp_borrowed_at = strtotime($loan['borrowed_at']);
 							$timestamp_borrowed_till = strtotime($loan['borrowed_till']); 
 							$i++;
@@ -239,5 +240,48 @@
 			</div>
 		</div>
 	</div>
+</div>
+<?php } else { ?>
+
+<div class="row">
+	<div class="col-12">
+		<div class="card mb-4" id="products">
+			<div class="card-header d-flex justify-content-between align-items-center">
+				<h4 class="mb-0">Producten</h4>
+				<?php if ($this->session->userdata('logged_in')) { ?><a href="<?php echo base_url(); ?>producten/nieuw" class="btn btn-primary">Nieuw product</a><?php } ?>
+			</div>
+			<div class="table-responsive">
+				<table class="table card-table mb-0 table-striped">
+					<thead>
+						<tr>
+							<th>Naam</th>
+							<th>Categorie</th>
+							<th class="text-center">Beschikbaar</th>
+		               <?php if ($this->session->userdata('logged_in')) { ?><th></th><?php } ?>
+						</tr>
+					</thead>
+					<tbody class="list">
+						<?php foreach($products as $product): ?>
+						<?php $available = ($product['count']-$product['product_lent']);?>
+							<tr>
+								<td class="name"><a href="<?=site_url('/producten/' . $product['slug'])?>"><?=$product['name']?></a></td>
+								<td><?=$product['category_name']?></td>
+								<td class="text-center"><?=$available?></td>
+		                  <?php if ($this->session->userdata('logged_in')) { ?>
+		                  <td class="d-flex justify-content-end align-items-center">
+		                     <?php if ($title == 'Producten') { ?>
+		                     <a class="btn btn-light mr-1" href="<?php echo base_url(); ?>producten/bewerken/<?php echo $product['slug']; ?>"><i class="fas fa-pencil-alt"></i></a>
+		                     <?php } ?>
+		                     <?php echo form_open('/products/delete/'.$product['product_id']); ?>
+		                     	<button type="submit" class="btn btn-danger" style="font-size: 16px !important;"><i class="fas fa-times"></i></button>
+		                     </form>
+		                  </td>
+		                  <?php } ?>
+		              </tr>
+						<?php endforeach; ?>
+					</tbody>
+			</div>
+		</div>
+	</div>	
 </div>
 <?php } ?>

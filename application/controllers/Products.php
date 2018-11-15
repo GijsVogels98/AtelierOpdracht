@@ -27,6 +27,12 @@
 		}
 		
 		public function create() {
+			
+			if (!$this->session->userdata('logged_in')) {
+				$this->session->set_flashdata('no_rights', 'Je hebt geen rechten tot deze pagina');
+				redirect('login');
+			}
+			
 			$data['title'] = 'Nieuw product';
 			
 			$data['categories'] = $this->Product_model->get_categories();
@@ -45,12 +51,24 @@
 		}
 
 		public function delete($id) {
+			
+			if (!$this->session->userdata('logged_in')) {
+				$this->session->set_flashdata('no_rights', 'Je hebt geen rechten tot deze pagina');
+				redirect('login');
+			}
+			
          $this->Product_model->delete_product($id);
          $this->session->set_flashdata('product_deleted', 'Het product is verwijderd.');
          redirect('producten');
    	}
    	
 		public function edit($slug) {
+			
+			if (!$this->session->userdata('logged_in')) {
+				$this->session->set_flashdata('no_rights', 'Je hebt geen rechten tot deze pagina');
+				redirect('login');
+			}
+			
          $data['product'] = $this->Product_model->get_products($slug);
          $data['categories'] = $this->Product_model->get_categories();
 
@@ -66,6 +84,12 @@
       }
 
       public function update(){
+	      
+	      if (!$this->session->userdata('logged_in')) {
+				$this->session->set_flashdata('no_rights', 'Je hebt geen rechten tot deze pagina');
+				redirect('login');
+			}
+	      
 		    $this->Product_model->update_post();
 
             $this->session->set_flashdata('product_updated','Het product is bewerkt.');

@@ -9,6 +9,7 @@
 			
 			$data['loans'] = $this->Borrowed_model->get_loans();
 			$data['categories'] = $this->category_model->get_categories();
+			$data['products'] = $this->Product_model->get_products();
 			
 			$this->load->view('templates/header');
 			$this->load->view('pages/'.$page, $data);

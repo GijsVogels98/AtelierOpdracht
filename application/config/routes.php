@@ -17,6 +17,8 @@ $route['lenen'] = 'borrowed/index';
 $route['lenen/ingeleverd'] = 'borrowed/redeemed';
 $route['lenen/nieuw'] = 'borrowed/create';
 $route['aanvragen'] = 'borrowed/request';
+$route['aanvragen/geweigerd'] = 'borrowed/denied_requests';
+$route['aanvragen/geaccepteerd'] = 'borrowed/accepted_requests';
 
 $route['login'] = 'users/login';
 $route['registreren'] = 'users/register';
