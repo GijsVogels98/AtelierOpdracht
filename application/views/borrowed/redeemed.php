@@ -107,6 +107,10 @@
 										<?php } ?>
 									</div>
 									<div class="modal-footer flex-wrap">
+										<?php echo form_open('/borrowed/delete/'.$loan['id']); ?>
+			                     	<button type="submit" class="btn btn-danger" style="font-size: 16px !important;"><i class="fas fa-times"></i> Verwijder</button>
+			                     </form>
+										
 			                     <?php echo form_open('/borrowed/deredeem/'.$loan['id']); ?>
 				                  	<input type="hidden" value="no" name="returned">
 				                  	<input type="hidden" value="<?=$loan['product_id']?>" name="product_id">

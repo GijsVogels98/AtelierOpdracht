@@ -184,4 +184,16 @@
          $this->session->set_flashdata('redeem_product', 'De lening is geweigerd');
          redirect('/');
    	}
+   	
+   	public function delete($id) {
+			
+			if (!$this->session->userdata('logged_in')) {
+				$this->session->set_flashdata('no_rights', 'Je hebt geen rechten tot deze pagina');
+				redirect('login');
+			}
+			
+         $this->Borrowed_model->delete_loan($id);
+         $this->session->set_flashdata('product_deleted', 'De lening is verwijderd.');
+         redirect('lenen/ingeleverd');
+   	}
 	}

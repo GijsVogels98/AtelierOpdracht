@@ -92,4 +92,10 @@
          $this->db->update('borrowed', $data);
          return true;
       }
+      
+      public function delete_loan($id){
+		    $this->db->where('id', $id);
+		    $this->db->delete('borrowed');
+		    return true;
+      }
 	}
