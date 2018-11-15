@@ -8,8 +8,7 @@
 		<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/jquery-ui.css">
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 		<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/style.css?<?php echo time(); ?>">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	</head>
+    </head>
 	<body>
 		<header class="mb-4">
 			<nav class="navbar navbar-expand-lg navbar-light bg-black text-white">
