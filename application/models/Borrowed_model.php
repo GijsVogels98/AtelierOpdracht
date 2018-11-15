@@ -47,6 +47,7 @@
 				'for_what' => $this->input->post('for_what'),
 				'note_before' => $this->input->post('note_before'),
 				'request' => 'false',
+				'user_id' => $this->session->userdata('username'),
 			);
 			
 			return $this->db->insert('borrowed', $data);;
@@ -75,6 +76,7 @@
 		   
 		   $data = array(
             'request' => 'accepted',
+            'user_id' => $this->session->userdata('username'),
          );
          
          $this->db->where('id', $id);
@@ -86,6 +88,7 @@
 		   
 		   $data = array(
             'request' => 'denied',
+            'user_id' => $this->session->userdata('username'),
          );
          
          $this->db->where('id', $id);
