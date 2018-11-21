@@ -1,7 +1,7 @@
 <?php $available = ($product['count']-$product['product_lent']);?>
 <div class="d-flex justify-content-between align-items-center">
 	<h2><?=$title?></h2>
-	<a href="<?php echo base_url(); ?>lenen/nieuw" class="btn btn-primary float-right">Nieuwe Lening</a>
+	<?php if ($this->session->userdata('logged_in')) { ?><a href="<?php echo base_url(); ?>lenen/nieuw" class="btn btn-primary float-right">Nieuwe Lening</a><?php } ?>
 </div>
 <div class="row">
 	<div class="col-md-9">

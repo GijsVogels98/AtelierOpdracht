@@ -13,7 +13,7 @@
   </div>
   <div class="form-group">
     <label for="count">Aantal</label>
-    <input type="number" class="form-control" id="count" name="count" placeholder="Voer hier in hoeveel stuks er zijn...">
+    <input type="number" class="form-control" id="count" name="count" placeholder="Voer hier in hoeveel stuks er zijn..." min="1">
   </div>
   <div class="form-group">
     <label for="category">Categorie</label>

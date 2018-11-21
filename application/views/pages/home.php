@@ -244,7 +244,7 @@
 <?php } else { ?>
 
 <div class="row">
-	<div class="col-12">
+	<div class="col-md-8">
 		<div class="card mb-4" id="products">
 			<div class="card-header d-flex justify-content-between align-items-center">
 				<h4 class="mb-0">Producten</h4>
@@ -266,7 +266,7 @@
 							<tr>
 								<td class="name"><a href="<?=site_url('/producten/' . $product['slug'])?>"><?=$product['name']?></a></td>
 								<td><?=$product['category_name']?></td>
-								<td class="text-center"><?=$available?></td>
+								<td class="text-center"><?php if ($available != 0) { ?><?=$available?><?php } else { echo 'Niet beschikbaar'; } ?></td>
 		                  <?php if ($this->session->userdata('logged_in')) { ?>
 		                  <td class="d-flex justify-content-end align-items-center">
 		                     <?php if ($title == 'Producten') { ?>
@@ -278,6 +278,29 @@
 		                  </td>
 		                  <?php } ?>
 		              </tr>
+						<?php endforeach; ?>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-4">
+		<div class="card mb-4" id="products">
+			<div class="card-header d-flex justify-content-between align-items-center">
+				<h4 class="mb-0">Categorieën</h4>
+			</div>
+			<div class="table-responsive">
+				<table class="table card-table mb-0 table-striped">
+					<thead>
+						<tr>
+							<th>Naam</th>
+						</tr>
+					</thead>
+					<tbody class="list">
+						<?php foreach($categories as $category): ?>
+							<tr>
+								<td class="name"><a href="<?php echo site_url('/categories/posts/' . $category['id']); ?>"><?php echo $category['category_name']; ?></a></td>
+		               </tr>
 						<?php endforeach; ?>
 					</tbody>
 			</div>

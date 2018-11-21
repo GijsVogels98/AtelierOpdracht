@@ -1,5 +1,5 @@
 <?php
-    class users extends CI_Controller{
+    class Users extends CI_Controller{
         public function register(){
             $data['title'] = 'Registreer';
 
@@ -17,7 +17,7 @@
                 //ecnrypt password
                 $enc_password = sha1($this->input->post('password'));
 
-                $this->user_model->register($enc_password);
+                $this->User_model->register($enc_password);
 
                 //set messages
                 $this->session->set_flashdata('user_registered','Gebruiker Geregistreerd');
@@ -43,7 +43,7 @@
                 $password = sha1($this->input->post('password'));
 
                 //login user
-                $user_id = $this->user_model->login($username,$password);
+                $user_id = $this->User_model->login($username,$password);
 
                 if($user_id){
                     //create session
@@ -87,7 +87,7 @@
         //check if username exists
         public function check_username_exists($username){
             $this->form_validation->set_message('check_username_exists','Naam al in gebruik.');
-            if($this->user_model->check_username_exists($username)){
+            if($this->User_model->check_username_exists($username)){
                 return true;
             }else{
                 return false;
@@ -96,7 +96,7 @@
         //check if email exists
         public function check_email_exists($email){
             $this->form_validation->set_message('check_email_exists','Email al in gebruik.');
-            if($this->user_model->check_email_exists($email)){
+            if($this->User_model->check_email_exists($email)){
                 return true;
             }else{
                 return false;
