@@ -5,6 +5,10 @@
 		<form class="form-inline mb-0">
 			<input type="text" id="productSearch" class="form-control search" placeholder="Zoeken...">
 		</form>
+        <div>
+            <a href="<?php echo base_url(); ?>aanvragen/geaccepteerd" class="btn btn-secondary">Geaccepteerde aanvragen</a>
+            <a href="<?php echo base_url(); ?>aanvragen/geweigerd" class="btn btn-primary">Afgewezen aanvragen</a>
+        </div>
 	</div>
 	<div class="table-responsive">
 		<table class="table card-table mb-0 table-striped">

@@ -14,7 +14,8 @@
 
                         select: function (event, ui) {
                             $('[name="student_number"]').val(ui.item.label);
-                            $('[name="cutomer_name"]').val(ui.item.description);
+                            $('[name="customer_name"]').val(ui.item.description);
+                            $('[name="customer_email"]').val(ui.item.email);
                         }
                     });
 

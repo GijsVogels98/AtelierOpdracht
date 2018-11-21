@@ -1,4 +1,5 @@
 <html>
+    <?php $page = basename($_SERVER['PHP_SELF']); ?>
 	<head>
 		<title>Sintlucas atelier</title>
 		<meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -26,29 +27,38 @@
 					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 						<span class="navbar-toggler-icon"></span>
 					</button>
-				
-					<div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul class="navbar-nav mr-auto">
-							<li class="nav-item">
-								<a class="nav-link text-white text-uppercase" href="<?php echo base_url(); ?>producten">Producten</a>
+                            <?php if ($this->session->userdata('logged_in')) { ?>
+                            <li class="nav-item">
+                                <a class="nav-link text-white text-uppercase <?php if($page == 'index.php'){ echo ' active';}?>" href="<?php echo base_url(); ?>">Dashboard</a>
+                            </li>
+                            <?php } ?>
+                            <li class="nav-item">
+								<a class="nav-link text-white text-uppercase <?php if($page == 'producten' ){ echo ' active';} elseif($page == 'categorieen' ){ echo ' active';}?>" href="<?php echo base_url(); ?>producten">Producten</a>
+                                <ul class="dropdown p-0">
+                                    <li class="nav-item">
+                                        <a class="nav-link text-white text-uppercase <?php if($page == 'producten' ){ echo ' active2';}?> " href="<?php echo base_url(); ?>producten">Producten</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-white text-uppercase <?php if($page == 'categorieen' ){ echo ' active2';}?>" href="<?php echo base_url(); ?>categorieen">Categorieën</a>
+                                    </li>
+                                </ul>
 							</li>
 							<?php if ($this->session->userdata('logged_in')) { ?>
 							<li class="nav-item">
-								<a class="nav-link text-white text-uppercase" href="<?php echo base_url(); ?>lenen">Lenen</a>
+								<a class="nav-link text-white text-uppercase <?php if($page == 'lenen'){ echo 'active';} elseif($page == 'geaccepteerd' ){ echo ' active';} elseif($page == 'geweigerd'){ echo ' active';} elseif($page == 'ingeleverd'){ echo ' active';}?>" href="<?php echo base_url(); ?>lenen">Lenen</a>
 								<ul class="dropdown p-0">
 									<li class="nav-item">
-										<a class="nav-link text-white text-uppercase" href="<?php echo base_url(); ?>aanvragen/geaccepteerd">Geaccepteerde aanvragen</a>
+										<a class="nav-link text-white text-uppercase <?php if($page == 'lenen' ){ echo ' active2';}?>" href="<?php echo base_url(); ?>lenen">Leningen</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link text-white text-uppercase" href="<?php echo base_url(); ?>aanvragen/geweigerd">Geweigerde aanvragen</a>
+										<a class="nav-link text-white text-uppercase <?php if($page == 'geaccepteerd' ){ echo ' active2';}?>" href="<?php echo base_url(); ?>aanvragen/geaccepteerd">Aanvragen</a>
 									</li>
 								</ul>
 							</li>
 							<?php } ?>
-							<li class="nav-item">
-								<a class="nav-link text-white text-uppercase" href="<?php echo base_url(); ?>categorieen">Categorieën</a>
-							</li>
-							<?php if (!$this->session->userdata('logged_in')) { ?>
+                            <?php if (!$this->session->userdata('logged_in')) { ?>
 							<li class="nav-item">
 								<a class="nav-link text-white text-uppercase" href="<?php echo base_url(); ?>aanvragen">Aanvragen</a>
 							</li>

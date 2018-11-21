@@ -1,10 +1,13 @@
 <h2><?=$title?></h2>
-
 <div class="card mb-4" id="products">
 	<div class="card-header d-flex justify-content-between align-items-center">
 		<form class="form-inline mb-0">
 			<input type="text" id="productSearch" class="form-control search" placeholder="Zoeken...">
 		</form>
+        <div>
+            <a href="<?php echo base_url(); ?>aanvragen/geaccepteerd" class="btn btn-primary">Geaccepteerde aanvragen</a>
+            <a href="<?php echo base_url(); ?>aanvragen/geweigerd" class="btn btn-secondary">Afgewezen aanvragen</a>
+        </div>
 	</div>
 	<div class="table-responsive">
 		<table class="table card-table mb-0 table-striped">

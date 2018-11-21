@@ -10,6 +10,14 @@ img { max-width: 100%; height: auto; }
 @media (min-width: 1440px) {
 	.container { width: 1400px; }
 }
+
+.active{
+    box-shadow: inset 0 -5px 0 rgb(255, 126, 0);
+}
+.active2{
+    background-color:  rgb(255, 126, 0);
+}
+
 a { cursor: pointer; }
 a:hover { text-decoration: none; }
 *:focus { outline: 0; }
@@ -34,7 +42,8 @@ form { margin: 0; }
 .navbar { padding: 0 30px; }
 .dropdown { position: absolute; list-style: none; background-color: #000; display: none; z-index: 9999; }
 .nav-item:hover .dropdown { display: block; }
-.nav-item .dropdown .nav-item .nav-link { padding: 13px; }
+.nav-item .dropdown .nav-item .nav-link { padding: 13px;}
+
 
 .nav-item .nav-link { padding: 1rem; }
 .nav-item:hover { box-shadow: inset 0 -5px 0 rgb(255, 126, 0); }
