@@ -1,5 +1,5 @@
 <?php
-	class autoload_model extends CI_Model{
+	class Autoload_model extends CI_Model{
 
 		function search_autoload($title){
 			$this->db->like('stamnr', $title , 'both');

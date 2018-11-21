@@ -5,7 +5,7 @@
 			
 			$data['title'] = 'Categorieën';
 			
-			$data['categories'] = $this->category_model->get_categories();
+			$data['categories'] = $this->Category_model->get_categories();
 			
 			$this->load->view('templates/header');
 			$this->load->view('categories/index', $data);
@@ -32,7 +32,7 @@
 				
 			} else {
 				
-				$this->category_model->create_category();
+				$this->Category_model->create_category();
 				
 				$this->session->set_flashdata('category_created', 'Je categorie is toegevoegd');
 				
@@ -43,7 +43,7 @@
 		
 		public function posts($id) {
 			
-			$data['title'] = $this->category_model->get_category($id)->category_name;
+			$data['title'] = $this->Category_model->get_category($id)->category_name;
 			
 			$data['products'] = $this->Product_model->get_products_by_category($id);
 			
@@ -60,7 +60,7 @@
 				redirect('login');
 			}
 			
-			$this->category_model->delete_category($id);
+			$this->Category_model->delete_category($id);
 			
 			$this->session->set_flashdata('category_deleted', 'Je categorie is verwijderd');
 			

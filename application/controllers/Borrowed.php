@@ -185,7 +185,7 @@
       
       public function get_autocomplete(){
          if (isset($_GET['term'])) {
-             $result = $this->autoload_model->search_autoload($_GET['term']);
+             $result = $this->Autoload_model->search_autoload($_GET['term']);
              if (count($result) > 0) {
                  foreach ($result as $row)
                      $arr_result[] = array(
