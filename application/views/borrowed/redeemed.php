@@ -80,7 +80,7 @@
 										</div>
 										<?php } ?>
 										<div class="lent_by">
-											<small>Uitgeleend door:</small> uitlener (Nog vervangen door sessie)
+											<small>Uitgeleend door:</small> <?=$loan['user_id']?>
 										</div>
 										
 										<div class="product mt-3">

@@ -25,13 +25,13 @@
     </div>
     <div class="form-group">
       <label for="product_id">Product</label>
-      <select name="product_id" class="form-control">
+      <select multiple="multiple" name="product_id" class="form-control">
               <?php foreach($products as $product):
                   if ($product['count'] == $product['product_lent']) { continue; }
               ?>
                   <option value="<?=$product['product_id']?>"><?=$product['name']?></option>
               <?php endforeach; ?>
-          </select>
+      </select>
     </div>
     <div class="form-group">
       <label for="for_what">Waar wordt het product voor gebruikt?</label>

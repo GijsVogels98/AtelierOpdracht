@@ -3,11 +3,13 @@
 		
 		public function index() {
 			
+			$data['page'] = 'categorieen';
+			
 			$data['title'] = 'Categorieën';
 			
 			$data['categories'] = $this->Category_model->get_categories();
 			
-			$this->load->view('templates/header');
+			$this->load->view('templates/header', $data);
 			$this->load->view('categories/index', $data);
 			$this->load->view('templates/footer');
 			
@@ -20,13 +22,15 @@
 				redirect('login');
 			}
 			
+			$data['page'] = 'nieuw';
+			
 			$data['title'] = 'Nieuw categorie';
 			
 			$this->form_validation->set_rules('category_name', 'Name', 'required', array('required'=>'Het veld naam is verplicht!'));
 			
 			if ( $this->form_validation->run() === FALSE ) {
 				
-				$this->load->view('templates/header');
+				$this->load->view('templates/header', $data);
 				$this->load->view('categories/create', $data);
 				$this->load->view('templates/footer');
 				
@@ -47,7 +51,7 @@
 			
 			$data['products'] = $this->Product_model->get_products_by_category($id);
 			
-			$this->load->view('templates/header');
+			$this->load->view('templates/header', $data);
 			$this->load->view('products/index', $data);
 			$this->load->view('templates/footer');
 						

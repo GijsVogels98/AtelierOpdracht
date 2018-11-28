@@ -2,11 +2,13 @@
 	class Products extends CI_Controller { 
 		public function index() { 
 			
+			$data['page'] = 'producten';
+			
 			$data['title'] = 'Producten';
 			
 			$data['products'] = $this->Product_model->get_products();
 			
-			$this->load->view('templates/header');
+			$this->load->view('templates/header', $data);
 			$this->load->view('products/index', $data);
 			$this->load->view('templates/footer');
 			
@@ -21,7 +23,7 @@
 			
 			$data['title'] = $data['product']['name'];
 			
-			$this->load->view('templates/header');
+			$this->load->view('templates/header', $data);
 			$this->load->view('products/view', $data);
 			$this->load->view('templates/footer');
 		}
@@ -45,7 +47,7 @@
 				redirect('/producten/' . $this->Product_model->create_product());
 			}
 			
-			$this->load->view('templates/header');
+			$this->load->view('templates/header', $data);
 			$this->load->view('products/create', $data);
 			$this->load->view('templates/footer');
 		}
@@ -78,7 +80,7 @@
 
          $data['title'] = 'Edit Product';
 
-         $this->load->view('templates/header');
+         $this->load->view('templates/header', $data);
          $this->load->view('products/edit', $data);
          $this->load->view('templates/footer');
       }

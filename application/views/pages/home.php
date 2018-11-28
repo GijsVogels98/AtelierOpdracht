@@ -35,9 +35,9 @@
 								<td><?=date('j F Y', $timestamp_borrowed_at)?></td>
 								<td><?=date('j F Y', $timestamp_borrowed_till)?></td>
 		                  <td class="d-flex justify-content-end align-items-center">
-			                  <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#moreinfo<?=$i?>">Weigeren of accepteren</button>
+			                  <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#moreinfo-aangevraagd<?=$i?>">Weigeren of accepteren</button>
 		                  </td>
-		                  <div class="modal fade" id="moreinfo<?=$i?>" tabindex="-1" role="dialog" aria-labelledby="moreinfo" aria-hidden="true">
+		                  <div class="modal fade" id="moreinfo-aangevraagd<?=$i?>" tabindex="-1" role="dialog" aria-labelledby="moreinfo-aangevraagd" aria-hidden="true">
 									<div class="modal-dialog modal-dialog-centered" role="document">
 										<div class="modal-content">
 											<div class="modal-header">
@@ -86,16 +86,20 @@
 												</div>
 												<?php } ?>
 											</div>
-											<div class="modal-footer">
-												<?php echo form_open('/borrowed/denied_request/'.$loan['id']); ?>
-						                  	<input type="hidden" value="yes" name="returned">
-						                  	<input type="hidden" value="<?=$loan['product_id']?>" name="product_id">
-													<button type="submit" class="btn btn-danger" style="font-size: 16px !important;"><i class="fas fa-times"></i> Weigeren</button>
-												</form>
-												<?php echo form_open('/borrowed/accept_request/'.$loan['id']); ?>
-						                  	<input type="hidden" value="yes" name="returned">
-						                  	<input type="hidden" value="<?=$loan['product_id']?>" name="product_id">
-													<button type="submit" class="btn btn-success" style="font-size: 16px !important;"><i class="fas fa-check"></i> Accepteren</button>
+											<div class="modal-footer flex-column justify-content-end">
+												<?php echo form_open('/borrowed/request_answer/'.$loan['id']); ?>
+													<div class="opmerking form-group d-block w-100">
+														<label for="note">Opmerking</label>
+														<textarea name="note" class="form-control"></textarea>
+													</div>
+													<input type="hidden" value="<?=$loan['product_id']?>" name="product_id">
+													<input type="hidden" value="<?=$loan['customer_email']?>" name="customer_email">
+													<input type="hidden" value="<?=$loan['borrowed_at']?>" name="borrowed_at">
+													<input type="hidden" value="<?=$loan['customer_name']?>" name="customer_name">
+						                  	<div class="w-100">
+														<button type="submit" class="btn btn-danger ml-auto"  name="denied"><i class="fas fa-times"></i> Weigeren</button>
+														<button type="submit" class="btn btn-success" name="accept"><i class="fas fa-check"></i> Accepteren</button>
+						                  	</div>
 												</form>
 											</div>
 										</div>
@@ -131,6 +135,7 @@
 							$i++;
 							?>
 						<?php if ($loan['returned'] === 'yes'): continue; endif; ?>
+						<?php if ($loan['request'] != 'accepted'): continue; endif; ?>
 						<?php $timestamp_borrowed_till = strtotime($loan['borrowed_till']); ?>
 						<?php if (date('Y/m/d', time()) < date('Y/m/d', $timestamp_borrowed_till)): continue; endif; ?>
 							<tr>

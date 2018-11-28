@@ -75,10 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'root',
-	'password' => '',
-	'database' => 'atelier_project',
+	'hostname' => 'localhost:3306',
+	'username' => 'stefve1q_db',
+	'password' => '3PTJqPG55H_L',
+	'database' => 'stefve1q_atelier',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

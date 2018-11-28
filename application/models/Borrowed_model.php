@@ -69,31 +69,79 @@
 				'request' => 'true',
 			);
 			
-			return $this->db->insert('borrowed', $data);;
+			return $this->db->insert('borrowed', $data);
+		}
+		
+		public function request_mail() {
+		
+			$email = 
+			'<h3>Product aanvraag</h3>
+			<p>op de website van het atelier is door ' . $this->input->post('customer_name') . ' een aanvraag gedaan.<br>
+			<br>
+			<strong>Leerlingnummer:</strong> ' . $this->input->post('student_number') . '<br>
+			<strong>E-mailadres:</strong> ' . $this->input->post('customer_email') . '<br>
+			<strong>Lenen van:</strong> ' . $this->input->post('borrowed_at') . '<br>
+			<strong>Lenen tot:</strong> ' . $this->input->post('borrowed_till') . '<br>
+			<br>
+			' . $this->input->post('customer_name') . ' wil deze producten gebruiken voor:<br>
+			' . $this->input->post('for_what') . '
+			<br>
+			<br>
+			(Dit is een automatisch gegenereerd bericht waarop je niet kunt antwoorden)</p>';
+			
+			return $email;	
 		}
 		
 		public function accept_request($id){
 		   
 		   $data = array(
             'request' => 'accepted',
+            'note_before' => $this->input->post('note'),
             'user_id' => $this->session->userdata('username'),
          );
          
          $this->db->where('id', $id);
          $this->db->update('borrowed', $data);
-         return true;
+			
+         $email = 
+			'<h3>Beste ' . $this->input->post('note') . ',</h3>
+			<p>op de website van het atelier heb je een aanvraag gedaan om wat te lenen, je aanvraag is <strong>goedgekeurd</strong> door ' . $this->session->userdata('username') . '.
+			<br>
+			<br>
+			Je kunt je product(en) op komen halen op ' . $this->input->post('borrowed_at') . ' bij Pieter Smolders.<br>
+			<br>
+			' . $this->input->post('customer_name') . 'Opmerking door ' . $this->session->userdata('username') . ':<br>
+			' . $this->input->post('note') . '
+			<br>
+			<br>
+			(Dit is een automatisch gegenereerd bericht waarop je niet kunt antwoorden)</p>';
+			
+			return $email;
       }
       
       public function denied_request($id){
 		   
 		   $data = array(
             'request' => 'denied',
+            'note_before' => $this->input->post('note'),
             'user_id' => $this->session->userdata('username'),
          );
          
          $this->db->where('id', $id);
          $this->db->update('borrowed', $data);
-         return true;
+         
+         $email = 
+			'<h3>Beste ' . $this->input->post('note') . ',</h3>
+			<p>op de website van het atelier heb je een aanvraag gedaan om wat te lenen, je aanvraag is <strong>geweigerd</strong> door ' . $this->session->userdata('username') . '.
+			<br>
+			<br>
+			De reden dat ' . $this->session->userdata('username') . ' je aanvraag geweigerd heeft is:<br>
+			' . $this->input->post('note') . '
+			<br>
+			<br>
+			(Dit is een automatisch gegenereerd bericht waarop je niet kunt antwoorden)</p>';
+			
+			return $email;
       }
       
       public function delete_loan($id){

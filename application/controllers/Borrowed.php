@@ -7,11 +7,13 @@
 				redirect('login');
 			}
 			
+			$data['page'] = 'lenen';
+			
 			$data['title'] = 'Openstaande leningen';
 			
 			$data['loans'] = $this->Borrowed_model->get_loans();
 			
-			$this->load->view('templates/header');
+			$this->load->view('templates/header', $data);
 			$this->load->view('borrowed/index', $data);
 			$this->load->view('templates/footer');
 			
@@ -24,11 +26,13 @@
 				redirect('login');
 			}
 			
+			$data['page'] = 'lenen';
+			
 			$data['title'] = 'Afgeronde leningen';
 			
 			$data['loans'] = $this->Borrowed_model->get_loans();
 			
-			$this->load->view('templates/header');
+			$this->load->view('templates/header', $data);
 			$this->load->view('borrowed/redeemed', $data);
 			$this->load->view('templates/footer');
 			
@@ -41,11 +45,13 @@
 				redirect('login');
 			}
 			
+			$data['page'] = 'geweigerd';
+			
 			$data['title'] = 'Afgewezen aanvragen';
 			
 			$data['loans'] = $this->Borrowed_model->get_loans();
 			
-			$this->load->view('templates/header');
+			$this->load->view('templates/header', $data);
 			$this->load->view('borrowed/denied', $data);
 			$this->load->view('templates/footer');
 			
@@ -57,12 +63,13 @@
 				$this->session->set_flashdata('no_rights', 'Je hebt geen rechten tot deze pagina');
 				redirect('login');
 			}
+			$data['page'] = 'geaccepteerd';
 			
 			$data['title'] = 'Geaccepteerde aanvragen';
 			
 			$data['loans'] = $this->Borrowed_model->get_loans();
 			
-			$this->load->view('templates/header');
+			$this->load->view('templates/header', $data);
 			$this->load->view('borrowed/accepted', $data);
 			$this->load->view('templates/footer');
 			
@@ -100,6 +107,8 @@
 				$this->session->set_flashdata('no_rights', 'Je hebt geen rechten tot deze pagina');
 				redirect('login');
 			}
+			
+			$data['page'] = 'lenen';
 	   	
 			$data['title'] = 'Nieuwe lening';
 			
@@ -116,13 +125,15 @@
 				redirect('lenen');
 			}
 			
-			$this->load->view('templates/header');
+			$this->load->view('templates/header', $data);
 			$this->load->view('borrowed/create', $data);
 			$this->load->view('templates/footer');
 		}
 		
 		
 		public function request() {
+			$data['page'] = 'aanvragen';
+			
 			$data['title'] = 'Nieuwe lening aanvragen';
 			
 			$data['products'] = $this->Product_model->get_products();
@@ -135,39 +146,92 @@
 			if ($this->form_validation->run()) {
 				$this->Borrowed_model->request_loan();
 				$this->session->set_flashdata('product_created', 'Je lening is aangevraagd!');
+				
+				$this->load->library('email');
+				
+				$config = array(
+					'mailtype' => 'html',
+				);
+				
+				$this->email->initialize($config);
+				
+				$this->email->from('noreply@stefverstraten.nl', 'Atelier Sintlucas');
+				$this->email->to('s.verstraten@sintlucasedu.nl');
+				
+				$this->email->subject('Aanvraag atelier');
+				$this->email->message($this->Borrowed_model->request_mail());
+				
+				$this->email->send();
+				
+				
 				redirect('/');
 			}
 			
-			$this->load->view('templates/header');
+			$this->load->view('templates/header', $data);
 			$this->load->view('borrowed/request', $data);
 			$this->load->view('templates/footer');
 		}
 		
-		public function accept_request($id) {
+		public function request_answer($id) {
 			
-			if (!$this->session->userdata('logged_in')) {
-				$this->session->set_flashdata('no_rights', 'Je hebt geen rechten tot deze pagina');
-				redirect('login');
+			if (isset($_POST['accept'])) {
+				if (!$this->session->userdata('logged_in')) {
+					$this->session->set_flashdata('no_rights', 'Je hebt geen rechten tot deze pagina');
+					redirect('login');
+				}
+			
+	         $this->Borrowed_model->accept_request($id);
+	         //$this->Product_model->product_min_one();
+	         $this->session->set_flashdata('redeem_product', 'De lening is geaccepteerd');
+	         
+	         $this->load->library('email');
+				
+				$config = array(
+					'mailtype' => 'html',
+				);
+				
+				$this->email->initialize($config);
+				
+				$this->email->from('noreply@stefverstraten.nl', 'Atelier Sintlucas');
+				$this->email->to($this->input->post('customer_email'));
+				
+				$this->email->subject('Je aanvraag is geaccepteerd!');
+				$this->email->message($this->Borrowed_model->accept_request($id));
+				
+				$this->email->send();
+	         
+	         redirect('/');	
+			} elseif (isset($_POST['denied'])) {
+				if (!$this->session->userdata('logged_in')) {
+					$this->session->set_flashdata('no_rights', 'Je hebt geen rechten tot deze pagina');
+					redirect('login');
+				}
+	   	
+	         $this->Borrowed_model->denied_request($id);
+	         //$this->Product_model->product_plus_one();
+	         $this->session->set_flashdata('redeem_product', 'De lening is geweigerd');
+	         
+	         $this->load->library('email');
+				
+				$config = array(
+					'mailtype' => 'html',
+				);
+				
+				$this->email->initialize($config);
+				
+				$this->email->from('noreply@stefverstraten.nl', 'Atelier Sintlucas');
+				$this->email->to($this->input->post('customer_email'));
+				
+				$this->email->subject('Je aanvraag is geweigerd!');
+				$this->email->message($this->Borrowed_model->denied_request($id));
+				
+				$this->email->send();
+	         
+	         redirect('/');
 			}
 			
-         $this->Borrowed_model->accept_request($id);
-         //$this->Product_model->product_min_one();
-         $this->session->set_flashdata('redeem_product', 'De lening is geaccepteerd');
-         redirect('/');
-   	}
-   	
-   	public function denied_request($id) {
-	   	
-	   	if (!$this->session->userdata('logged_in')) {
-				$this->session->set_flashdata('no_rights', 'Je hebt geen rechten tot deze pagina');
-				redirect('login');
-			}
-	   	
-         $this->Borrowed_model->denied_request($id);
-         //$this->Product_model->product_plus_one();
-         $this->session->set_flashdata('redeem_product', 'De lening is geweigerd');
-         redirect('/');
-   	}
+		}
+		
    	
    	public function delete($id) {
 			
@@ -181,7 +245,6 @@
          redirect('lenen/ingeleverd');
    	}
    	
-
       
       public function get_autocomplete(){
          if (isset($_GET['term'])) {

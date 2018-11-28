@@ -77,6 +77,11 @@
 										</div>
 										<?php } ?>
 										
+										<div class="lent_by">
+											<small>Geweigerd door:</small> <?=$loan['user_id']?>
+										</div>
+
+										
 										<div class="product mt-3">
 											<small>Aangevraagd product:</small> <a href="<?=site_url('/producten/' . $loan['slug'])?>"><?=$loan['name']?></a>
 										</div>
